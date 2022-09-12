@@ -1,4 +1,4 @@
-from application import db
+from application import db, login_manager
 
 class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -15,3 +15,7 @@ class Users(db.Model):
     #     '\r\n'
     #     'User Name: ', self.user_name 
     #     )
+
+@login_manager.user_loader
+def load_user(id):
+    return Users.query.get(int(id))

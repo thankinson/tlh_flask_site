@@ -45,6 +45,9 @@
             
             
     </form>
-    <div class="warning"><p class="warningtext">{{ message }} </p></div>
+
+    {% if message %}
+        <div class="warning"><p class="warningtext">{{ message }} </p></div>
+    {% endif %}
 </div>
 {% endblock body %}

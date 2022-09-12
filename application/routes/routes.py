@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 from application import app
 from application.forms.forms import UserRegistration, UserLogin
-from application.service.service import Userservice
+from application.service.service import Userservice, Loginservice
 
 @app.route('/')
 @app.route('/home')
@@ -20,3 +20,20 @@ def register():
             message = "User Name or Email Already in use"
 
     return render_template('signup.html', form=form, message=message)
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    print("Login page hit")
+    message = ""
+    Loginservice.is_logged_in()
+    form = UserLogin()
+    if form.validate_on_submit():
+        try:
+            print("Login page if hit")
+
+            Loginservice.log_in(form=form)
+            message = "login success"
+        except:
+            message = "User Name or Password Incorrect"  
+    return render_template('login.html', form=form, message=message)
