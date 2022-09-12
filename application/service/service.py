@@ -2,6 +2,7 @@ from application import db
 from application.models.models import Users
 from application import bcrypt
 
+
 class Userservice():
         def Adduser(form):
             # message = ""
