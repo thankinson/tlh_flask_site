@@ -12,11 +12,13 @@ def index():
 def register():
     message = ""
     form = UserRegistration()
-    if form.validate_on_submit():
-        try:
-            Userservice.Adduser(form=form)
-            message = "User added to database"
-        except:
-            message = "User Name or Email Already in use"
+    Userservice.Adduser(form=form)
+
+    # if form.validate_on_submit():
+    #     try:
+    #         Userservice.Adduser(form=form)
+    #         message = "User added to database"
+    #     except:
+    #         message = "User Name or Email Already in use"
 
     return render_template('signup.html', form=form, message=message)
