@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+{% block styles %}<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/index.css') }}">{% endblock styles %}
+{% block tital %}<title>Home</title>{% endblock tital %}
+
+{% block body %}
+    <div class="index-info">
+        <h1 class="colour-white">Welcome to my website</h1>
+        <p class="colour-white">This website is for demostrating how i use Flask Web Microframework to create an application
+            <br>
+        This website aims to demonstrate Full CRUD for databases
+        <br>
+        Creating user accounts and being able to login and manage account</p>
+    </div>
+{% endblock body %}

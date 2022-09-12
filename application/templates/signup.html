@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+{% block styles %}<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/signup.css') }}">{% endblock styles %}
+{% block tital %}<title>Home</title>{% endblock tital %}
+
+{% block body %}
+
+
+<h2 class="no-padding">Sign Up Page</h2>
+<p>Some features on this site will only be accesable by logging in.
+    <br>
+    To access these features please sign up bellow.
+</p>
+
+<div class="form">
+    <form class="form-container" method="POST" action="">
+        {{ form.hidden_tag() }}
+            <div class="signup-info">
+                {{ form.user_name.label }}
+                {{ form.user_name(placeholder="Enter a username") }}
+            </div>
+            <div class="signup-info">
+                {{ form.first_name.label }}
+                {{ form.first_name(placeholder="Enter First Name") }}
+            </div>
+            <div class="signup-info">
+                {{ form.last_name.label }}
+                {{ form.last_name(placeholder="Enter Last Name") }}
+
+            </div>
+            <div class="signup-info">
+                {{ form.user_email.label }}
+                {{ form.user_email(placeholder="Enter Email") }}
+            </div>            
+            <div class="signup-info">
+                {{ form.password.label }}
+                {{ form.password(placeholder="Enter Password") }}
+            </div>
+            <div class="signup-info">
+                {{ form.password.label }}
+                {{ form.confirm_password(placeholder="Confirm Password") }}
+            </div>
+            <div class="submit-box">
+                {{ form.submit(class_="submit-button") }}
+            </div>
+            
+            
+    </form>
+    <p>{{ message }} </p>
+</div>
+{% endblock body %}

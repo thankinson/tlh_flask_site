@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+      
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main.css') }}">
+    {% block styles %}{% endblock styles %}
+    {% block tital %}{% endblock tital %}
+</head>
+<body>
+    <div class="header_div">
+        
+        <h1 class="no-padding">Tom's Flask Site</h1>
+    
+        <div class="nav-div">
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('register') }}">Sign Up</a></li>
+            </ul>
+        </div>
+
+    </div>
+    
+    <div class="main-content">
+        {% block body %}{% endblock body %}
+    </div>
+    <div class="footer-div"><h6 class="no-padding">Tom Hankinson || GitHub <a href="" target="_blank" >Portfolio</a></h6></div>
+</body>
+</html>
