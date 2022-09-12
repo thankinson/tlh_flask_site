@@ -14,14 +14,19 @@ def register():
     message = ""
     form = UserRegistration()
 
+
+    ###################################################################
+    ####              create service class in sep doc              ####
+    ####              check dan messenger                          ####
+    ###################################################################
+
     # ######## you need to fix this later. you are trying to check the db before you have sent the user infor or something like that
     if form.validate_on_submit():
         # print("submit hit")
-        # check_user = Users.query.filter_by(user_name=form.user_name.lower()).first()
         # check_email = Users.query.filter_by(user_email=form.user_email.lower()).first()
-        # print(check_user)
+
         # print(check_email)
-        # if check_email.user_email == form.user_email.lower() or check_user.user_name == form.user_name.lower():
+        # if check_email == form.user_email.lower():
         #     message = "Account already exists"
         #     print("already in db")
         # else:
