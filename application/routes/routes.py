@@ -1,8 +1,7 @@
 from flask import Flask, render_template
-from application import app, db
+from application import app
 from application.forms.forms import UserRegistration, UserLogin
-from application.models.models import Users
-from application import bcrypt
+from application.service.service import Userservice
 
 @app.route('/')
 @app.route('/home')
@@ -13,34 +12,30 @@ def index():
 def register():
     message = ""
     form = UserRegistration()
-
-
-    ###################################################################
-    ####              create service class in sep doc              ####
-    ####              check dan messenger                          ####
-    ###################################################################
-
-    # ######## you need to fix this later. you are trying to check the db before you have sent the user infor or something like that
     if form.validate_on_submit():
-        # print("submit hit")
-        # check_email = Users.query.filter_by(user_email=form.user_email.lower()).first()
-
-        # print(check_email)
-        # if check_email == form.user_email.lower():
-        #     message = "Account already exists"
-        #     print("already in db")
-        # else:
-        hash_pw = bcrypt.generate_password_hash(form.password.data)
-        users = Users(
-            user_name = form.user_name.data,
-            first_name = form.first_name.data,
-            last_name = form.last_name.data,
-            user_email = form.user_email.data,
-            password = hash_pw
-        )
-
-        db.session.add(users)
-        db.session.commit()
-        message = "User added to database"
+        try:
+            Userservice.Adduser(form=form)
+            message = "User added to database"
+        except:
+            message = "user already in db"
 
     return render_template('signup.html', form=form, message=message)
+
+
+################################################################
+####           functions that have been replaced            ####
+    # if form.validate_on_submit():
+    #     hash_pw = bcrypt.generate_password_hash(form.password.data)
+    #     users = Users(
+    #         user_name = form.user_name.data,
+    #         first_name = form.first_name.data,
+    #         last_name = form.last_name.data,
+    #         user_email = form.user_email.data,
+    #         password = hash_pw
+    #     )
+
+    #     db.session.add(users)
+    #     db.session.commit()
+    #     message = "User added to database"
+
+    # return render_template('signup.html', form=form, message=message)
