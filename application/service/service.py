@@ -36,7 +36,6 @@ class Loginservice():
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             print("Login service if hit")
             print(user.user_name)
-            ##### stalls out here ####
             user.remember_user = True
             db.session.add(user)
             db.session.commit()

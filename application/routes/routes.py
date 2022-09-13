@@ -6,10 +6,12 @@ from application.service.service import Userservice, Loginservice
 @app.route('/')
 @app.route('/home')
 def index():
+    Loginservice.is_logged_in()
     return render_template('index.html')
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    # Loginservice.is_logged_in()
     message = ""
     form = UserRegistration()
     if form.validate_on_submit():
@@ -31,9 +33,8 @@ def login():
     if form.validate_on_submit():
         try:
             print("Login page if hit")
-
             Loginservice.log_in(form=form)
-            message = "login success"
+            message = "Logged in"
         except:
             message = "User Name or Password Incorrect"  
     return render_template('login.html', form=form, message=message)
