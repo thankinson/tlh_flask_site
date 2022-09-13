@@ -35,9 +35,14 @@ class Loginservice():
 
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             print("Login service if hit")
-
-            login_user(user)
+            print(user.user_name)
+            ##### stalls out here ####
+            user.remember_user = True
+            db.session.add(user)
+            db.session.commit()
+            login_user(user, remember=True)
             print(user.user_name, ' Login_user')
+            return redirect(url_for("index"))
             # next_page = request.args.get('index')
             # if next_page:
             #     return redirect(url_for(next_page))
