@@ -17,6 +17,18 @@
                 <li><a href="{{ url_for('index') }}">Home</a></li>
                 <li><a href="{{ url_for('register') }}">Sign Up</a></li>
             </ul>
+
+            <button class="open-button" onclick="OpenForm()">Login</button>
+            <div class="form-pop" id="myForm">
+                <form>
+
+                    <p>This is a test pop</p>
+                    <p>More test text</p>
+                    <button  onclick="CloseForm()">Cancle</button>
+                </form>
+            </div>
+
+
         </div>
 
     </div>
@@ -25,5 +37,17 @@
         {% block body %}{% endblock body %}
     </div>
     <div class="footer-div"><h6 class="no-padding">Tom Hankinson || GitHub <a href="" target="_blank" >Portfolio</a></h6></div>
+
+
+
+    <script  type="text/javascript">
+        function OpenForm() {
+            document.getElementById('myFrom').style.display = "block";
+        }
+        
+        function CloseForm() {
+            document.getElementById('myFrom').style.display = "none";
+        }
+    </script>
 </body>
 </html>

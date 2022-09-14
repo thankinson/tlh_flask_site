@@ -78,3 +78,14 @@ body{
         display: inline;
     }
 
+
+    /* logn form */
+
+    .form-pop{
+        display: none;
+        position: fixed;
+        bottom: 0;
+        right: 15px;
+        border: solid 3px #f1f1f1;
+        z-index: 9;
+    }
