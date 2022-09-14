@@ -20,12 +20,34 @@
 
             <button class="open-button" onclick="OpenForm()">Login</button>
             <div class="form-pop" id="myForm">
-                <form>
+                <div class="form">
+                    <form class="form-container" method="POST" action="">
+                        {{ form.hidden_tag() }}
+            
+                        <div>
+                            {{ form.user_name.label }}
+                            {{ form.user_name }}
+            
+                        </div>
+                        <div>
+                            {{ form.password.label }}
+                            {{ form.password }}
+                        </div>
+                        <div>
+                            {{ form.remember_user.label }}
+                            {{ form.remember_user }}
+                        </div>
+                        <div>
+                            {{ form.submit }}
+                        </div>
+                    </form>
+                    <div>
+                        {{ message }}
+                    </div>
+                </div>
+            
+            <button class="open-button" onclick="CloseForm()">Close</button>
 
-                    <p>This is a test pop</p>
-                    <p>More test text</p>
-                    <button  onclick="CloseForm()">Cancle</button>
-                </form>
             </div>
 
 
@@ -42,11 +64,11 @@
 
     <script  type="text/javascript">
         function OpenForm() {
-            document.getElementById('myFrom').style.display = "block";
+            document.getElementById('myForm').style.display = "block";
         }
         
         function CloseForm() {
-            document.getElementById('myFrom').style.display = "none";
+            document.getElementById('myForm').style.display = "none";
         }
     </script>
 </body>

@@ -8,8 +8,20 @@ from flask_login import current_user
 @app.route('/')
 @app.route('/home')
 def index():
+    message = ""
     Loginservice.is_logged_in()
-    return render_template('index.html')
+    form = UserLogin()
+    if form.validate_on_submit():
+        try:
+            Loginservice.log_in(form=form)
+            if current_user.is_authenticated:
+                # return redirect(url_for('index'))
+                message = "Success... Your in!"
+            else:
+                message = "User Name or Password Incorrect"
+        except:
+            message = "Fatel Error: The Admin Gods do not smile upon you" 
+    return render_template('index.html', form=form, message=message)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
