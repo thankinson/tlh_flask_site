@@ -1,5 +1,3 @@
-import email
-from urllib import request
 from flask import redirect, url_for
 from application import db
 from application.models.models import Users

@@ -1,7 +1,9 @@
 from flask import Flask, render_template, redirect, url_for
 from application import app
 from application.forms.forms import UserRegistration, UserLogin
+from application.models.models import Users
 from application.service.service import Userservice, Loginservice
+from flask_login import current_user
 
 @app.route('/')
 @app.route('/home')
@@ -33,7 +35,10 @@ def login():
     if form.validate_on_submit():
         try:
             Loginservice.log_in(form=form)
-            return redirect(url_for('index'))
+            if current_user.is_authenticated:
+                return redirect(url_for('index'))
+            else:
+                message = "User Name or Password Incorrect"
         except:
-            message = "User Name or Password Incorrect"  
+            message = "Fatel Error: The Admin Gods do not smile upon you"  
     return render_template('login.html', form=form, message=message)
