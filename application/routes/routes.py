@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
 from application import app
 from application.forms.forms import UserRegistration, UserLogin
 from application.service.service import Userservice, Loginservice
@@ -32,9 +32,8 @@ def login():
     form = UserLogin()
     if form.validate_on_submit():
         try:
-            print("Login page if hit")
             Loginservice.log_in(form=form)
-            message = "Logged in"
+            return redirect(url_for('index'))
         except:
             message = "User Name or Password Incorrect"  
     return render_template('login.html', form=form, message=message)

@@ -27,12 +27,7 @@ class Loginservice():
             return redirect(url_for('index'))
     
     def log_in(form):
-        print("Login service hit")
-
         user = Users.query.filter_by(user_name=form.user_name.data).first()
-        print(user.user_name)
-        print(user.password)
-
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             print("Login service if hit")
             print(user.user_name)
@@ -40,8 +35,8 @@ class Loginservice():
             db.session.add(user)
             db.session.commit()
             login_user(user, remember=True)
-            print(user.user_name, ' Login_user')
-            return redirect(url_for("index"))
+            # print(user.user_name, ' Login_user')
+            # return redirect(url_for('index'))
             # next_page = request.args.get('index')
             # if next_page:
             #     return redirect(url_for(next_page))

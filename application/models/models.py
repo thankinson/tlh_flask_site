@@ -9,6 +9,7 @@ class Users(db.Model, UserMixin):
     user_email = db.Column(db.String(30), nullable=False, unique=True)
     password = db.Column(db.String(200), nullable=False)
     remember_user = db.Column(db.Boolean, default=False)
+    
     def __repr__(self) -> str:
         return ''.join(['UserId: ', str(self.id), '\r\n',
         'Email: ', self.user_email], '\r\n'
