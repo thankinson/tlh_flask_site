@@ -14,8 +14,8 @@
 <button class="open-button" onclick="OpenForm()">Login</button>
 <button class="open-button" onclick="CloseForm()">Sign Up</button>
 <div class="form">
+    {{ logform.hidden_tag() }}
     <form class="signupform-container" method="POST" action="" id="signUp">
-        {{ form.hidden_tag() }}
             <div class="signup-info">
                 {{ form.user_name.label }}
                 {{ form.user_name(placeholder="Enter a username") }}
@@ -48,16 +48,16 @@
             
     </form>
     <form class="loginform-container" method="POST" action="" id="logIn">
-        {{ logform.hidden_tag() }}
+    
 
         <div>
             {{ logform.user_name.label }}
-            {{ form.user_name }}
+            {{ logform.user_name }}
 
         </div>
         <div>
             {{ logform.password.label }}
-            {{ form.password }}
+            {{ logform.password }}
         </div>
         <div>
             {{ logform.remember_user.label }}
