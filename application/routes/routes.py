@@ -12,7 +12,9 @@ def index():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    Loginservice.is_logged_in()
+    # Loginservice.is_logged_in()  #### this is not yet working
+
+    ## Sign Up section ##
     message = ""
     form = UserRegistration()
     if form.validate_on_submit():
