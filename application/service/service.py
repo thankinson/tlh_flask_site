@@ -24,9 +24,9 @@ class Loginservice():
         if current_user.is_authenticated:
             return redirect(url_for('index'))
     
-    def log_in(form):
-        user = Users.query.filter_by(user_name=form.user_name.data).first()
-        if user and bcrypt.check_password_hash(user.password, form.password.data):
+    def log_in(logform):
+        user = Users.query.filter_by(user_name=logform.user_name.data).first()
+        if user and bcrypt.check_password_hash(user.password, logform.password.data):
             print("Login service if hit")
             print(user.user_name)
             user.remember_user = True

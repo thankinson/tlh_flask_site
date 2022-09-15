@@ -28,7 +28,7 @@ def register():
         try:
             Loginservice.log_in(logform=logform)
             if current_user.is_authenticated:
-                return redirect(url_for('index'))
+                message = "Your IN!!!!!!"
             else:
                 message = "User Name or Password Incorrect"
         except:
