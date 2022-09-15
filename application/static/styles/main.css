@@ -77,18 +77,3 @@ body{
     li{
         display: inline;
     }
-
-
-    /* logn form */
-
-    .form-pop{
-        display: none;
-        position: fixed;
-        /* bottom: 0; */
-        top: 15vh;
-        right: 15px;
-        border: solid 1px #f1f1f1;
-        z-index: 0;
-        background-color: #f1f1f1;
-
-    }

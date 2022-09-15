@@ -17,40 +17,6 @@
                 <li><a href="{{ url_for('index') }}">Home</a></li>
                 <li><a href="{{ url_for('register') }}">Sign Up</a></li>
             </ul>
-
-            <button class="open-button" onclick="OpenForm()">Login</button>
-            <div class="form-pop" id="myForm">
-                <div class="form">
-                    <form class="form-container" method="POST" action="">
-                        {{ form.hidden_tag() }}
-            
-                        <div>
-                            {{ form.user_name.label }}
-                            {{ form.user_name }}
-            
-                        </div>
-                        <div>
-                            {{ form.password.label }}
-                            {{ form.password }}
-                        </div>
-                        <div>
-                            {{ form.remember_user.label }}
-                            {{ form.remember_user }}
-                        </div>
-                        <div>
-                            {{ form.submit }}
-                        </div>
-                    </form>
-                    <div>
-                        {{ message }}
-                    </div>
-                </div>
-            
-            <button class="open-button" onclick="CloseForm()">Close</button>
-
-            </div>
-
-
         </div>
 
     </div>
@@ -62,14 +28,7 @@
 
 
 
-    <script  type="text/javascript">
-        function OpenForm() {
-            document.getElementById('myForm').style.display = "block";
-        }
-        
-        function CloseForm() {
-            document.getElementById('myForm').style.display = "none";
-        }
-    </script>
+    {% block script %}
+    {% endblock script %}
 </body>
 </html>

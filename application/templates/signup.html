@@ -5,14 +5,16 @@
 {% block body %}
 
 
-<h2 class="no-padding">Sign Up Page</h2>
+<h2 class="no-padding">Sign Up or Login</h2>
 <p>Some features on this site will only be accesable by logging in.
     <br>
     To access these features please sign up bellow.
 </p>
 
+<button class="open-button" onclick="OpenForm()">Login</button>
+<button class="open-button" onclick="CloseForm()">Sign Up</button>
 <div class="form">
-    <form class="form-container" method="POST" action="">
+    <form class="signupform-container" method="POST" action="" id="signUp">
         {{ form.hidden_tag() }}
             <div class="signup-info">
                 {{ form.user_name.label }}
@@ -45,9 +47,80 @@
             
             
     </form>
+    <form class="loginform-container" method="POST" action="" id="logIn">
+        {{ logform.hidden_tag() }}
 
+        <div>
+            {{ logform.user_name.label }}
+            {{ form.user_name }}
+
+        </div>
+        <div>
+            {{ logform.password.label }}
+            {{ form.password }}
+        </div>
+        <div>
+            {{ logform.remember_user.label }}
+            {{ logform.remember_user }}
+        </div>
+        <div>
+            {{ logform.submit }}
+        </div>
+    </form>
+</div>
     {% if message %}
         <div class="warning"><p class="warningtext">{{ message }} </p></div>
     {% endif %}
 </div>
 {% endblock body %}
+
+
+
+
+
+<!-- <button class="open-button" onclick="OpenForm()">Login</button>
+<div class="form-pop" id="myForm">
+    <div class="form">
+        <form class="form-container" method="POST" action="">
+            {{ form.hidden_tag() }}
+
+            <div>
+                {{ form.user_name.label }}
+                {{ form.user_name }}
+
+            </div>
+            <div>
+                {{ form.password.label }}
+                {{ form.password }}
+            </div>
+            <div>
+                {{ form.remember_user.label }}
+                {{ form.remember_user }}
+            </div>
+            <div>
+                {{ form.submit }}
+            </div>
+        </form>
+        <div>
+            {{ message }}
+        </div>
+    </div>
+
+    <button class="open-button" onclick="CloseForm()">Close</button>
+
+</div> -->
+
+{% block script %}
+<script  type="text/javascript">
+    function OpenForm() {
+        document.getElementById('signUp').style.display = "none";
+        document.getElementById('logIn').style.display = "flex";
+
+    }
+    
+    function CloseForm() {
+        document.getElementById('logIn').style.display = "none";
+        document.getElementById('signUp').style.display = "flex";
+    }
+</script>
+{% endblock script %}
