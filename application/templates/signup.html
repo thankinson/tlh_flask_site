@@ -6,7 +6,7 @@
 
 
 <h2 class="no-padding">Sign Up or Login</h2>
-<p>Some features on this site will only be accesable by logging in.
+<p>Some features on this site will only be accessible by logging in.
     <br>
     To access these features please sign up bellow.
 </p>
@@ -23,8 +23,9 @@
     </div>
 
 <div class="form">
-    {{ logform.hidden_tag() }}
+    {{ form.hidden_tag() }}
     <form class="signupform-container" method="POST" action="" id="signUp">
+            {{ form.csrf_token }}
             <div class="signup-info">
                 {{ form.user_name.label }}
                 {{ form.user_name(placeholder="Enter a username") }}
@@ -36,7 +37,6 @@
             <div class="signup-info">
                 {{ form.last_name.label }}
                 {{ form.last_name(placeholder="Enter Last Name") }}
-
             </div>
             <div class="signup-info">
                 {{ form.user_email.label }}
@@ -51,18 +51,15 @@
                 {{ form.confirm_password(placeholder="Confirm Password") }}
             </div>
             <div class="submit-box">
-                {{ form.submit(class_="submit-button") }}
-            </div>
-            
-            
+                {{ form.submit(class_="submit-button" ) }}
+            </div>            
     </form>
-    <form class="loginform-container" method="GET" action="" id="logIn">
-    
 
+    <form class="loginform-container" method="POST" action="" id="logIn">
+        {{ form.csrf_token }}
         <div class="signup-info">
             {{ logform.user_name.label }}
             {{ logform.user_name }}
-
         </div>
         <div class="signup-info">
             {{ logform.password.label }}
@@ -80,7 +77,7 @@
             {{ logform.submit }}
         </div>
     </form>
-</div>
+
     {% if message %}
         <div class="warning"><p class="warningtext">{{ message }} </p></div>
     {% endif %}
@@ -104,6 +101,18 @@
         document.getElementById('LogInBtn').style.display = "flex";
         document.getElementById('SignUpBtn').style.display = "none";
     }
+    
+    function HandleEvent(event){
+        event.preventDefault(); 
+    }
+    $(document).on('submit','#signUp',function(e) {
+        e.preventDefault(); 
 
+    })
+    $(document).on('submit','#logIn',function(e) {
+        e.preventDefault(); 
+
+    })
+  
 </script>
 {% endblock script %}

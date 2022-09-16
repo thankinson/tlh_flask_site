@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, request
-from application import app
+from application import app, csrf
 from application.forms.forms import UserRegistration, UserLogin
 from application.models.models import Users
 from application.service.service import Userservice, Loginservice
@@ -12,6 +12,7 @@ def index():
     return render_template('index.html')
 
 @app.route('/register', methods=['GET', 'POST'])
+@csrf.exempt
 def register():
     # Loginservice.is_logged_in()  #### this is not yet working
     message = ""
@@ -26,11 +27,11 @@ def register():
                 message = "User Name or Email Already in use"
         
     elif logform.validate_on_submit():
-        if request.method == 'GET':
+        if request.method == 'POST':
             try:
                 Loginservice.log_in(logform=logform)
                 if current_user.is_authenticated:
-                    message = "Your IN!!!!!!"
+                    return redirect(url_for('index'))
                 else:
                     message = "User Name or Password Incorrect"
             except:
