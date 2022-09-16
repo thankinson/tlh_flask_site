@@ -11,37 +11,64 @@ from flask_login import current_user
 def index():
     return render_template('index.html')
 
-
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     # Loginservice.is_logged_in()  #### this is not yet working
-
-    ########################################
-    ## need to work out the logic on this
-    ########################################
-    ## Sign Up section ##
     message = ""
     form = UserRegistration()
-    if form.validate_on_submit():
-        try:
-            Userservice.Adduser(form=form)
-            message = "User added to database"
-        except:
-            message = "User Name or Email Already in use"
-    
-    # login section on signup
     logform = UserLogin()
-    if logform.validate_on_submit():
-        try:
-            Loginservice.log_in(logform=logform)
-            if current_user.is_authenticated:
-                message = "Your IN!!!!!!"
-            else:
-                message = "User Name or Password Incorrect"
-        except:
-            message = "Fatel Error: The Admin Gods do not smile upon you"  
+    if form.validate_on_submit():
+        if request.method == 'POST':
+            try:
+                Userservice.Adduser(form=form)
+                message = "User added to database"
+            except:
+                message = "User Name or Email Already in use"
+        
+    elif logform.validate_on_submit():
+        if request.method == 'GET':
+            try:
+                Loginservice.log_in(logform=logform)
+                if current_user.is_authenticated:
+                    message = "Your IN!!!!!!"
+                else:
+                    message = "User Name or Password Incorrect"
+            except:
+                message = "Fatel Error: The Admin Gods do not smile upon you"  
 
     return render_template('signup.html', form=form, logform=logform, message=message)
+
+
+# @app.route('/register', methods=['GET', 'POST'])
+# def register():
+#     # Loginservice.is_logged_in()  #### this is not yet working
+
+#     ########################################
+#     ## need to work out the logic on this
+#     ########################################
+#     ## Sign Up section ##
+#     message = ""
+#     form = UserRegistration()
+#     if form.validate_on_submit():
+#         try:
+#             Userservice.Adduser(form=form)
+#             message = "User added to database"
+#         except:
+#             message = "User Name or Email Already in use"
+    
+#     # login section on signup
+#     logform = UserLogin()
+#     if logform.validate_on_submit():
+#         try:
+#             Loginservice.log_in(logform=logform)
+#             if current_user.is_authenticated:
+#                 message = "Your IN!!!!!!"
+#             else:
+#                 message = "User Name or Password Incorrect"
+#         except:
+#             message = "Fatel Error: The Admin Gods do not smile upon you"  
+
+#     return render_template('signup.html', form=form, logform=logform, message=message)
 
 
 # @app.route('/login', methods=['GET', 'POST'])
@@ -152,3 +179,44 @@ def register():
 
 
 #     return render_template('signup.html', form=form, logform=logform)
+
+
+# ## attempt 3
+
+# @app.route('/register', methods=['GET', 'POST'])
+# def register():
+#     # Loginservice.is_logged_in()  #### this is not yet working
+
+#     ########################################
+#     ## need to work out the logic on this
+#     ########################################
+#     ## Sign Up section ##
+#     message = ""
+#     form = UserRegistration()
+#     if form.validate_on_submit():
+#         try:
+#             Userservice.Adduser(form=form)
+#             message = "User added to database"
+#         except:
+#             message = "User Name or Email Already in use"
+    
+
+#     return render_template('signup.html', form=form, message=message)
+    
+
+# # @app.route('/register', methods=['GET', 'POST'])
+# def login():    
+#     # login section on signup
+#     message = ""
+#     logform = UserLogin()
+#     if logform.validate_on_submit():
+#         try:
+#             Loginservice.log_in(logform=logform)
+#             if current_user.is_authenticated:
+#                 message = "Your IN!!!!!!"
+#             else:
+#                 message = "User Name or Password Incorrect"
+#         except:
+#             message = "Fatel Error: The Admin Gods do not smile upon you"  
+
+#     return render_template('signup.html', logform=logform, message=message)
