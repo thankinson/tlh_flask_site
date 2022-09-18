@@ -30,8 +30,6 @@ class Loginservice():
             print("Login service if hit")
             print(user.user_name)
             user.remember_user = True
-            db.session.add(user)
-            db.session.commit()
             login_user(user, remember=True)
             # print(user.user_name, ' Login_user')
             # return redirect(url_for('index'))
@@ -40,3 +38,4 @@ class Loginservice():
             #     return redirect(url_for(next_page))
             # else:
             #     return redirect('index')
+
