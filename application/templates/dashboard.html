@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% block styles %}<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/dashboard.css') }}">{% endblock styles %}
+
+{% block tital %}<title>Dashboard</title>{% endblock tital %}
+
+{% block body %}
+
+    <div class="dashboard-container">
+
+        <div class="top-dash-div">
+            <div class="user-details">
+                <div class="ud-style">
+                    {% if current_user.is_authenticated %}
+                        <h2 class="dash-padding">Your Account Information</h2>
+                        <h3>User Name: {{ current_user.user_name }}</h3>
+                        <h3>First Name: {{ current_user.first_name.capitalize() }}</h3>
+                        <h3>Last Name: {{ current_user.last_name.capitalize() }}</h3>
+                        <h3>Email: {{ current_user.user_email }}</h3>
+                    {% endif %}  
+                </div>
+            </div>
+
+            <div class="pass-change">
+                <div class="pc-style">
+                    <h2>Password Change</h2>
+                        {{ changeform.password.label}}
+                        {{ changeform.password }}
+                        {{ changeform.new_pass.label }}
+                        {{ changeform.new_pass }}
+                        {{ changeform.confirm_new_pass.label }}
+                        {{ changeform.confirm_new_pass }}
+
+                </div>
+            </div>
+
+        </div>
+        <div class="bot-dash-div">
+            <h1>delete account</h1>
+        </div>
+
+    </div>
+
+{% endblock body %}
+
+{% block script %}
+{% endblock script %}

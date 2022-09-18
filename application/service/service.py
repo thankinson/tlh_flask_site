@@ -19,8 +19,11 @@ class Userservice():
             db.session.add(users)
             db.session.commit()
 
+        # def UserDetails():
+            
+
 class Loginservice():
-    def is_logged_in():
+    def is_logged_in(current_user):
         if current_user.is_authenticated:
             return redirect(url_for('index'))
     
