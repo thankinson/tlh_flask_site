@@ -22,11 +22,12 @@ class Users(db.Model, UserMixin):
         return True
     
     def get_id(self):
-        return self.user_email
+        # return self.user_email
+        return self.id
     
     def is_authenticated(self):
         return self.remember_user
 
 @login_manager.user_loader
 def load_user(id):
-    return Users.query.get(id)
+    return Users.query.get(int(id))
