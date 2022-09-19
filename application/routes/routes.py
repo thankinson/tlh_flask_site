@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, url_for, request
 from application import app, csrf
 from application.forms.forms import UserRegistration, UserLogin, ChangePassword, RemoverAccount
-from application.service.service import Userservice, Loginservice, DeleteService
+from application.service.service import Userservice, Loginservice, DeleteService, UpdateService
 from flask_login import current_user, logout_user, login_required
 
 
@@ -46,11 +46,15 @@ def dashboard():
     if not current_user.is_authenticated:
         return redirect(url_for('index'))
     
-    if removeform.validate_on_submit():
+    if changeform.validate_on_submit():
+        if request.method == "POST":
+            UpdateService.updatePass(changeform=changeform)
+    elif removeform.validate_on_submit():
         if request.method == "POST":
             DeleteService.deleteUser()
             return redirect(url_for('index'))
-    
+  
+
     return render_template('dashboard.html', changeform=changeform, removeform=removeform)
 
 

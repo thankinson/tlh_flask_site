@@ -46,3 +46,18 @@ class DeleteService():
         logout_user()
 
 
+class UpdateService():
+    def updatePass(changeform):
+        print("Update pass hit")
+        user = Users.query.filter_by(user_name=current_user.user_name).first()
+        if user and bcrypt.check_password_hash(user.password, changeform.password.data):
+            if changeform.new_pass.data == changeform.confirm_new_pass.data:
+                hash_pw = bcrypt.generate_password_hash(changeform.new_pass.data)
+                user.password = hash_pw
+                db.session.commit()
+
+
+
+
+
+
