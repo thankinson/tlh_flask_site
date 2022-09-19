@@ -1,0 +1,127 @@
+h2, h3, label{
+    color: white;
+}
+h2{
+    text-decoration-line: underline;
+}
+.dash-padding{
+    padding-top: 10px;
+    margin: 0px;
+}
+.dash-no-padding{
+    padding-top: 0px;
+    margin: 0px;
+}
+.dashboard-container{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 84vh;
+}
+.top-dash-div{
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 42vh;
+}
+    .user-details{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 50vw;
+        height: 42vh;
+    }
+        .ud-style{
+            text-indent: 50px;
+            width: 40vw;
+            height: 38vh;
+            border-radius: 4px;
+            background-color: rgba(63, 64, 86, 0.881);
+        }
+
+.bot-dash-div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 42vh;
+}
+    .pass-change{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 50vw;
+        height: 42vh;
+    }
+        .pc-style{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 40vw;
+            height: 40vh;
+            border-radius: 4px;
+            background-color: rgba(63, 64, 86, 0.881);
+
+        }
+        .pcs{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            height: 40vh;
+        }
+
+            .pcs-space{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+            input{
+                border-radius: 4px;
+                width: 20vw;
+                height: 4vh;
+                font-weight: 700;
+            }
+            .pcs-space-center{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            .del-check{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: center;
+                height: 100%;
+                width: 100%;
+            }
+            .del-con-out{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: center;
+                height: 100%;
+                width: 100%;  
+            }
+            .del-con{
+                display: none;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: center;
+                height: 100%;
+                width: 100%;
+            }
+            .btnStyle{
+                width: 20vw;
+                height: 5vh;
+            }
+            .subBtn{
+                background-color: red;
+                border: solid 1px black;
+                height: 5vh;
+            }

@@ -1,9 +1,9 @@
 from flask import Flask, render_template, redirect, url_for, request
 from application import app, csrf
-from application.forms.forms import UserRegistration, UserLogin
+from application.forms.forms import UserRegistration, UserLogin, ChangePassword, RemoverAccount
 from application.models.models import Users
 from application.service.service import Userservice, Loginservice
-from flask_login import current_user, logout_user
+from flask_login import current_user, logout_user, login_required
 
 
 @app.route('/')
@@ -33,7 +33,7 @@ def register():
             try:
                 Loginservice.log_in(logform=logform)
                 if current_user.is_authenticated:
-                    return redirect(url_for('index'))
+                    return redirect(url_for('dashboard'))
                 else:
                     message = "User Name or Password Incorrect"
             except:
@@ -41,6 +41,16 @@ def register():
 
     return render_template('signup.html', form=form, logform=logform, message=message)
 
+@app.route('/dashboard')
+def dashboard():
+    changeform = ChangePassword()
+    removeform = RemoverAccount()
+    if not current_user.is_authenticated:
+        return redirect(url_for('index'))
+    
+    
+
+    return render_template('dashboard.html', changeform=changeform, removeform=removeform)
 
 
 # logout function
