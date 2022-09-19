@@ -16,6 +16,7 @@ def index():
 @csrf.exempt
 def register():
     message = ""
+    logmessage = ""
     form = UserRegistration()
     logform = UserLogin()
     if form.validate_on_submit():
@@ -33,16 +34,17 @@ def register():
                 if current_user.is_authenticated:
                     return redirect(url_for('dashboard'))
                 else:
-                    message = "User Name or Password Incorrect"
+                    logmessage = "User Name or Password Incorrect"
             except:
-                message = "Fatel Error: The Admin Gods do not smile upon you"  
+                logmessage = "Fatel Error: The Admin Gods do not smile upon you"  
 
-    return render_template('signup.html', form=form, logform=logform, message=message)
+    return render_template('signup.html', form=form, logform=logform, message=message, logmessage=logmessage)
 
 @app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
     changeform = ChangePassword()
     removeform = RemoverAccount()
+    message = ""
     if not current_user.is_authenticated:
         return redirect(url_for('index'))
     
@@ -50,9 +52,13 @@ def dashboard():
         if request.method == "POST":
             UpdateService.updatePass(changeform=changeform)
     elif removeform.validate_on_submit():
-        if request.method == "POST":
-            DeleteService.deleteUser()
-            return redirect(url_for('index'))
+        try:
+            if request.method == "POST":
+                DeleteService.deleteUser()
+                message = "Succesfuly removed user"
+                return redirect(url_for('index'))
+        except:
+            message = "Delete Failed"
   
 
     return render_template('dashboard.html', changeform=changeform, removeform=removeform)
