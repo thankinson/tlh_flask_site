@@ -1,5 +1,5 @@
 from application import db
-from application.models.models import Users, AdminTable, UserAdmin
+from application.models.models import Users, UserAdmin, UserRoles
 from application import bcrypt
 
 # check_user = Users.query.filter_by(user_name='thankinson'.lower()).first()
@@ -12,12 +12,12 @@ from application import bcrypt
 db.drop_all()
 db.create_all()
 # add usr works
-# hash_pw = bcrypt.generate_password_hash('thankinson')
+# hash_pw = bcrypt.generate_password_hash('password')
 # AdminUser = Users(
 #     user_name='thankinson',
 #     first_name='tom',
 #     last_name='hankinson',
-#     user_email='tom_lh@live.co.uk',
+#     user_email='tom@email.com',
 #     password= hash_pw
 #     )
 # db.session.add(AdminUser)
