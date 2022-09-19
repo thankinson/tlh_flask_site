@@ -23,4 +23,7 @@ class ChangePassword(FlaskForm):
     confirm_new_pass = PasswordField('Confirm New Password: ', validators=[DataRequired(), EqualTo('new_pass')])
     submit = SubmitField('Change Password')
 
+class RemoverAccount(FlaskForm):
+    submit = SubmitField('Delete Account')
+
 

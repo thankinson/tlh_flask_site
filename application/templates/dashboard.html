@@ -11,33 +11,88 @@
         <div class="top-dash-div">
             <div class="user-details">
                 <div class="ud-style">
+                    <div>
                     {% if current_user.is_authenticated %}
                         <h2 class="dash-padding">Your Account Information</h2>
                         <h3>User Name: {{ current_user.user_name }}</h3>
                         <h3>First Name: {{ current_user.first_name.capitalize() }}</h3>
                         <h3>Last Name: {{ current_user.last_name.capitalize() }}</h3>
                         <h3>Email: {{ current_user.user_email }}</h3>
-                    {% endif %}  
+                    {% endif %}
+                    </div>  
                 </div>
             </div>
 
-            <div class="pass-change">
-                <div class="pc-style">
-                    <h2>Password Change</h2>
-                        {{ changeform.password.label}}
-                        {{ changeform.password }}
-                        {{ changeform.new_pass.label }}
-                        {{ changeform.new_pass }}
-                        {{ changeform.confirm_new_pass.label }}
-                        {{ changeform.confirm_new_pass }}
-                        {{ changeform.submit }}
-
+                        <div class="user-details">
+                <div class="ud-style">
+                    <div>
+                        <h2>Dashboard Controll</h2>
+                        <h3>Here you can manage your account.</h3>
+                        <h3>View user information</h3>
+                        <h3>Update user password</h3>
+                        <h3>Delete user account</h3>
+                    </div>  
                 </div>
             </div>
 
         </div>
+        <!-- bottom page div -->
         <div class="bot-dash-div">
-            <h1>delete account</h1>
+            <div class="pass-change">
+                <div class="pc-style form">
+                    {{ changeform.hidden_tag() }}
+                    <form class="pcs" method="POST" action="">
+                            {{ changeform.csrf_token }}
+                        <div class="pcs-space">
+                            <h2 class="dash-no-padding">Password Change</h2>
+                        </div>
+                        <div class="pcs-space">
+                            {{ changeform.password.label}}
+                            {{ changeform.password }}
+                        </div>
+                        <div class="pcs-space">
+                            {{ changeform.new_pass.label }}
+                            {{ changeform.new_pass }}
+                        </div>
+                        <div class="pcs-space">
+                            {{ changeform.confirm_new_pass.label }}
+                            {{ changeform.confirm_new_pass }}
+                        </div>
+                        <div class="pcs-space-center">
+                            {{ changeform.submit }}
+                        </div>
+
+                    </form>
+                    
+                </div>
+            </div>
+        
+            <div class="pass-change">
+                <div class="pc-style form">
+                    
+                    {{ removeform.hidden_tag() }}
+
+                        <h2>Remove Account</h2>
+                        <div class="del-check"  id="checkBtn">
+                                <h3>Do you wish to delete your account?</h3>
+                                <button class="btnStyle" onclick="subBtn()">Delete Account</button>
+                        </div>
+                        
+                        <div class="del-con" id="confBtn" >
+                            <h3>Click Delete Account to remove account</h3>
+                            <button class="btnStyle" onclick="cancleBtn()">Cancel Delete</button>
+
+                            <form method="POST" action="">
+                                {{ removeform.csrf_token }}
+                            
+                                {{ removeform.submit(class_="subBtn") }}
+                            </form>
+                        </div>
+
+                    </div>
+
+        
+            </div>
         </div>
 
     </div>
@@ -45,4 +100,19 @@
 {% endblock body %}
 
 {% block script %}
+
+<script>
+
+    const subBtn=()=>{
+        document.getElementById('checkBtn').style.display = "none";
+        document.getElementById('confBtn').style.display = "flex";
+    }
+    const cancleBtn=()=>{
+        document.getElementById('checkBtn').style.display = "flex";
+        document.getElementById('confBtn').style.display = "none";
+    }
+
+
+</script>
+
 {% endblock script %}

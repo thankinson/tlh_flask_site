@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, request
 from application import app, csrf
-from application.forms.forms import UserRegistration, UserLogin, ChangePassword
+from application.forms.forms import UserRegistration, UserLogin, ChangePassword, RemoverAccount
 from application.models.models import Users
 from application.service.service import Userservice, Loginservice
 from flask_login import current_user, logout_user, login_required
@@ -44,12 +44,13 @@ def register():
 @app.route('/dashboard')
 def dashboard():
     changeform = ChangePassword()
+    removeform = RemoverAccount()
     if not current_user.is_authenticated:
         return redirect(url_for('index'))
     
     
 
-    return render_template('dashboard.html', changeform=changeform)
+    return render_template('dashboard.html', changeform=changeform, removeform=removeform)
 
 
 # logout function
