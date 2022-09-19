@@ -15,13 +15,9 @@ class Userservice():
                 user_email = form.user_email.data,
                 password = hash_pw
             )
-
             db.session.add(users)
             db.session.commit()
-
-        # def UserDetails():
             
-
 class Loginservice():
     def is_logged_in(current_user):
         if current_user.is_authenticated:
@@ -41,4 +37,12 @@ class Loginservice():
             #     return redirect(url_for(next_page))
             # else:
             #     return redirect('index')
+
+class DeleteService():
+    def deleteUser():
+        user = Users.query.filter_by(user_name=current_user.user_name).first()
+        db.session.delete(user)
+        db.session.commit()
+        logout_user()
+
 

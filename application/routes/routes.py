@@ -1,8 +1,7 @@
 from flask import Flask, render_template, redirect, url_for, request
 from application import app, csrf
 from application.forms.forms import UserRegistration, UserLogin, ChangePassword, RemoverAccount
-from application.models.models import Users
-from application.service.service import Userservice, Loginservice
+from application.service.service import Userservice, Loginservice, DeleteService
 from flask_login import current_user, logout_user, login_required
 
 
@@ -16,7 +15,6 @@ def index():
 @app.route('/register', methods=['GET', 'POST'])
 @csrf.exempt
 def register():
-    # Loginservice.is_logged_in()  #### this is not yet working
     message = ""
     form = UserRegistration()
     logform = UserLogin()
@@ -41,15 +39,18 @@ def register():
 
     return render_template('signup.html', form=form, logform=logform, message=message)
 
-@app.route('/dashboard')
+@app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
     changeform = ChangePassword()
     removeform = RemoverAccount()
     if not current_user.is_authenticated:
         return redirect(url_for('index'))
     
+    if removeform.validate_on_submit():
+        if request.method == "POST":
+            DeleteService.deleteUser()
+            return redirect(url_for('index'))
     
-
     return render_template('dashboard.html', changeform=changeform, removeform=removeform)
 
 
