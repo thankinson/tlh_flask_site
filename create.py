@@ -6,9 +6,6 @@ from application import bcrypt
 
 # print(check_user.user_name)
 
-
-
-
 db.drop_all()
 db.create_all()
 # add usr works
