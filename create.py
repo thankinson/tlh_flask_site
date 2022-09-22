@@ -12,24 +12,22 @@ from application import bcrypt
 db.drop_all()
 db.create_all()
 # add usr works
-# hash_pw = bcrypt.generate_password_hash('password')
-# AdminUser = Users(
-#     user_name='thankinson',
-#     first_name='tom',
-#     last_name='hankinson',
-#     user_email='tom@email.com',
-#     password= hash_pw
-#     )
-# db.session.add(AdminUser)
+hash_pw = bcrypt.generate_password_hash('password')
+AdminUser = Users(
+    user_name='thankinson',
+    first_name='tom',
+    last_name='hankinson',
+    user_email='tom@email.com',
+    password= hash_pw
+    )
+db.session.add(AdminUser)
 
-# addAdmin = AdminTable(
-#     user_name='thankinson',
-#     first_name='tom',
-#     last_name='hankinson'
-#     )
-# db.session.add(addAdmin)
+AdminRole = UserRoles(
+    roles = 'admin'
+    )
+db.session.add(AdminRole)
 
-# addUserAdmin = UserAdmin(users=AdminUser, admintable=addAdmin)
-# db.session.add(addUserAdmin)
+addUserAdmin = UserAdmin(users=AdminUser, UserRoles=AdminRole)
+db.session.add(addUserAdmin)
 
-# db.session.commit()
+db.session.commit()
