@@ -40,6 +40,8 @@ class UserRoles(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     roles = db.Column(db.String(30), nullable=False)
+    readAllowed = db.Column(db.Boolean)
+    writeAllowed = db.Column(db.Boolean)
     user_id = db.relationship('UserAdmin', backref='UserRoles')
 
 class UserAdmin(db.Model):
