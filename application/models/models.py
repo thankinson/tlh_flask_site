@@ -34,18 +34,9 @@ class Users(db.Model, UserMixin):
 def load_user(id):
     return Users.query.get(int(id))
 
-# class AdminTable(db.Model):
-#     __tablename__ = 'admin_table'
-
-#     id = db.Column(db.Integer, primary_key=True)
-#     user_name = db.Column(db.String(30), nullable=False, unique=True)
-#     first_name = db.Column(db.String(30), nullable=False)
-#     last_name = db.Column(db.String(30), nullable=False)
-#     user_id = db.relationship('UserAdmin', backref='admin_table')
 
 class UserRoles(db.Model):
     __tablename__ = 'UserRoles'
-
 
     id = db.Column(db.Integer, primary_key=True)
     roles = db.Column(db.String(30), nullable=False)
@@ -56,4 +47,4 @@ class UserAdmin(db.Model):
     user_id = db.Column('user_id', db.Integer, db.ForeignKey('users.id'))
     roles_id = db.Column('roles_id', db.Integer, db.ForeignKey('UserRoles.id'))
 
-    # admin_id = db.Column('admin_id', db.Integer, db.ForeignKey('admin_table.id'))
+   

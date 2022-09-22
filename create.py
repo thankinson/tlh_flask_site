@@ -30,4 +30,23 @@ db.session.add(AdminRole)
 addUserAdmin = UserAdmin(users=AdminUser, UserRoles=AdminRole)
 db.session.add(addUserAdmin)
 
+
+hash_pw = bcrypt.generate_password_hash('password')
+AdminUser = Users(
+    user_name='jsmith',
+    first_name='john',
+    last_name='smith',
+    user_email='john@email.com',
+    password= hash_pw
+    )
+db.session.add(AdminUser)
+
+AdminRole = UserRoles(
+    roles = 'user'
+    )
+db.session.add(AdminRole)
+
+addUserAdmin = UserAdmin(users=AdminUser, UserRoles=AdminRole)
+db.session.add(addUserAdmin)
+
 db.session.commit()
