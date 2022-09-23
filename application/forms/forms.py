@@ -14,5 +14,16 @@ class UserRegistration(FlaskForm):
 class UserLogin(FlaskForm):
     user_name = StringField('User Name: ', validators=[DataRequired(), Length(min=4, max=30)])
     password = PasswordField('Password: ', validators=[DataRequired()])
-    remember_user = BooleanField('Remember Me')
+    remember_user = BooleanField('Remember Me :')
     submit = SubmitField('Login')
+
+class ChangePassword(FlaskForm):
+    password = PasswordField('Old Password: ', validators=[DataRequired()])
+    new_pass = PasswordField('New Password: ', validators=[DataRequired()])
+    confirm_new_pass = PasswordField('Confirm New Password: ', validators=[DataRequired(), EqualTo('new_pass')])
+    submit = SubmitField('Change Password')
+
+class RemoverAccount(FlaskForm):
+    submit = SubmitField('Delete Account')
+
+

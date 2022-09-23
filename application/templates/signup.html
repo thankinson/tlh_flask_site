@@ -5,15 +5,27 @@
 {% block body %}
 
 
-<h2 class="no-padding">Sign Up Page</h2>
-<p>Some features on this site will only be accesable by logging in.
+<h2 class="no-padding">Sign Up or Login</h2>
+<p>Some features on this site will only be accessible by logging in.
     <br>
     To access these features please sign up bellow.
 </p>
+    <div class="buttoncontainer">
+        
+        <div class="login-btn-div" id="LogInBtn">
+            <button class="btn-size" onclick="OpenForm()">Login Form</button>
+        </div>
+        
+        <div class="signup-btn-div" id="SignUpBtn">
+            <button class="btn-size" onclick="CloseForm()">Sign Up Form</button>
+        </div>
+
+    </div>
 
 <div class="form">
-    <form class="form-container" method="POST" action="">
-        {{ form.hidden_tag() }}
+    {{ form.hidden_tag() }}
+    <form class="signupform-container" method="POST" action="" id="signUp">
+            {{ form.csrf_token }}
             <div class="signup-info">
                 {{ form.user_name.label }}
                 {{ form.user_name(placeholder="Enter a username") }}
@@ -25,7 +37,6 @@
             <div class="signup-info">
                 {{ form.last_name.label }}
                 {{ form.last_name(placeholder="Enter Last Name") }}
-
             </div>
             <div class="signup-info">
                 {{ form.user_email.label }}
@@ -40,11 +51,68 @@
                 {{ form.confirm_password(placeholder="Confirm Password") }}
             </div>
             <div class="submit-box">
-                {{ form.submit(class_="submit-button") }}
-            </div>
-            
-            
+                {{ form.submit(class_="submit-button" ) }}
+            </div>            
     </form>
-    <p>{{ message }} </p>
+
+    <form class="loginform-container" method="POST" action="" id="logIn">
+        {{ form.csrf_token }}
+        <div class="signup-info">
+            {{ logform.user_name.label }}
+            {{ logform.user_name }}
+        </div>
+        <div class="signup-info">
+            {{ logform.password.label }}
+            {{ logform.password }}
+        </div>
+        <div class="tick-signup-info">
+            <div class="tick-text-div">
+                {{ logform.remember_user.label }}
+            </div>
+            <div class="tick-div">
+                {{ logform.remember_user}}
+            </div>
+        </div>
+        <div class="signup-info">
+            {{ logform.submit }}
+        </div>
+    </form>
+
+    {% if logmessage %}
+        <div class="warning"><p class="warningtext">{{ logmessage }} </p></div>
+    {% endif %}
 </div>
 {% endblock body %}
+
+
+{% block script %}
+<script  type="text/javascript">
+    function OpenForm() {
+        document.getElementById('signUp').style.display = "none";
+        document.getElementById('logIn').style.display = "flex";
+        document.getElementById('LogInBtn').style.display = "none";
+        document.getElementById('SignUpBtn').style.display = "flex";
+
+    }
+    
+    function CloseForm() {
+        document.getElementById('logIn').style.display = "none";
+        document.getElementById('signUp').style.display = "flex";
+        document.getElementById('LogInBtn').style.display = "flex";
+        document.getElementById('SignUpBtn').style.display = "none";
+    }
+    
+    function HandleEvent(event){
+        event.preventDefault(); 
+    }
+    $(document).on('submit','#signUp',function(e) {
+        e.preventDefault(); 
+
+    })
+    $(document).on('submit','#logIn',function(e) {
+        e.preventDefault(); 
+
+    })
+  
+</script>
+{% endblock script %}
