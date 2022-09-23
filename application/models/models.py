@@ -9,14 +9,16 @@ class Users(db.Model, UserMixin):
     user_email = db.Column(db.String(30), nullable=False, unique=True)
     password = db.Column(db.String(200), nullable=False)
     remember_user = db.Column(db.Boolean, default=False)
+    admin_id = db.relationship('UserAdmin', backref='users')
+
     
-    def __repr__(self) -> str:
-        return ''.join(['UserId: ', str(self.id), '\r\n',
-        'Email: ', self.user_email], '\r\n'
-        'Name: ', self.first_name, ' ', self.last_name,
-        '\r\n'
-        'User Name: ', self.user_name 
-        )
+    # def __repr__(self) -> str:
+    #     return ''.join(['UserId: ', str(self.id), '\r\n',
+    #     'Email: ', self.user_email], '\r\n'
+    #     'Name: ', self.first_name, ' ', self.last_name,
+    #     '\r\n'
+    #     'User Name: ', self.user_name 
+    #     )
 
     def is_active(self):
         return True
@@ -31,3 +33,20 @@ class Users(db.Model, UserMixin):
 @login_manager.user_loader
 def load_user(id):
     return Users.query.get(int(id))
+
+
+class UserRoles(db.Model):
+    __tablename__ = 'UserRoles'
+
+    id = db.Column(db.Integer, primary_key=True)
+    roles = db.Column(db.String(30), nullable=False)
+    readAllowed = db.Column(db.Boolean)
+    writeAllowed = db.Column(db.Boolean)
+    user_id = db.relationship('UserAdmin', backref='UserRoles')
+
+class UserAdmin(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column('user_id', db.Integer, db.ForeignKey('users.id'))
+    roles_id = db.Column('roles_id', db.Integer, db.ForeignKey('UserRoles.id'))
+
+   

@@ -1,5 +1,3 @@
-/application/data.db
-/application/fomrs/__pycache__/
-/application/models/__pycache__/
-/application/routes/__pycache__/
-/application/__pycache__/
+**/__pycache__/
+**/venv/
+*.db
