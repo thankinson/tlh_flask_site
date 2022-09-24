@@ -3,13 +3,21 @@
 This project started as a way for me to practice flask while on the QA Cloud course and since starting i have deceded to use it as part of my final project.
 
 ## The Project
-
+### Flask app
 This Flask app is designed to :
 
     - Allow user to access the user dashboard and update password or delete account.
     - Allow Admin to access an admin dashboard so they can give users diferent access rights to content or remove a user. 
 
 The user should not be able to access the admin dashboard. 
+
+### The Database
+The database uses 3 tables to manage user information and what contente they can see and use in this app.
+
+The Tables
+- Users --- Holds user information.
+- UserAdmin --- This is the bridge between the Users and UserRoles table.
+- UserRoles --- This table says what admin and users cann access using booleans.
 
 ## Python Modules
 - Flask==2.2.2
