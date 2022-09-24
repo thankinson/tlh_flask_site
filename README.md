@@ -19,6 +19,9 @@ The Tables
 - UserAdmin --- This is the bridge between the Users and UserRoles table.
 - UserRoles --- This table says what admin and users cann access using booleans.
 
+### Jenkinsfile
+The jenkins file will setup and run tests of this Flask App
+
 ## Python Modules
 - Flask==2.2.2
 - Flask-Bcrypt==1.0.1
