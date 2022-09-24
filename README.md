@@ -18,3 +18,46 @@ The user should not be able to access the admin dashboard.
 - Flask-SQLAlchemy==2.5.1
 - Flask-Testing==0.8.1
 - Flask-WTF==1.0.1
+
+## File Structure
+
+    root/
+    |----application/
+    |           |---forms/
+    |           |       |--forms.py   
+    |           |
+    |           |---models/
+    |           |       |--models.py
+    |           |
+    |           |---modules/
+    |           |       |--csrf.py
+    |           |
+    |           |---routes/
+    |           |       |--routes.py
+    |           |
+    |           |---service/
+    |           |       |--service.py
+    |           |
+    |           |---static/
+    |           |       |--javascript/
+    |           |       |--styles/
+    |           |               |--adminpage.css
+    |           |               |--dashboard.css
+    |           |               |--index.css
+    |           |               |--main.css
+    |           |               |--signup.css
+    |           |
+    |           |---templates/
+    |                   |--adminpage.html
+    |                   |--dashboard.html
+    |                   |--index.html
+    |                   |--layout.html
+    |                   |--main.html
+    |                   |--signup.html
+    |---.gitignore
+    |
+    |---app.py
+    |
+    |---Jenkinsfile
+    |
+    |---README.md
