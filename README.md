@@ -6,7 +6,7 @@ This project started as a way for me to practice flask while on the QA Cloud cou
 
 This Flask app is designed to :
 
-    - Allow to set user can access the user dashboard and update pass word or delete account.
+    - Allow user to access the user dashboard and update pass word or delete account.
     - Allow Admin to access an admin dashboard so they can give users diferent access rights to content or remove a user. 
 
 The user should not be able to access the admin dashboard. 
