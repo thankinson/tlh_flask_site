@@ -1,6 +1,6 @@
-from flask import redirect, url_for
+from flask import redirect, url_for, render_template
 from application import db
-from application.models.models import Users
+from application.models.models import Users, UserAdmin
 from application import bcrypt
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -45,7 +45,6 @@ class DeleteService():
         db.session.commit()
         logout_user()
 
-
 class UpdateService():
     def updatePass(changeform):
         print("Update pass hit")
@@ -56,7 +55,25 @@ class UpdateService():
                 user.password = hash_pw
                 db.session.commit()
 
+class AdminPage():
+    def checkAdmin():
+        if current_user.is_authenticated:
+            isAdmin = UserAdmin.query.filter_by(user_id=current_user.id).first()
+            if current_user.id == isAdmin.user_id:
+                if isAdmin.roles_id == 1:
+                    isUserRole = UserAdmin.query.all()
+                    isUser = Users.query.all()
+                    return render_template('adminpage.html', users=isUser, role=isUserRole)                
+                else:
+                    return redirect(url_for('dashboard'))
+        else: 
+            return redirect(url_for('index'))
 
+    def deleteUserById(id):
+        delete_user = Users.query.filter_by(id=id).first()
+        db.session.delete(delete_user)
+        db.session.commit()
+        return redirect(url_for('admin'))
 
 
 
