@@ -1,0 +1,31 @@
+p, h1, h3{
+    color: white;
+}
+.page-content{
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+    justify-content: flex-start;
+    align-items: center;
+    width: 100vw;
+    min-height: 84vh;
+}
+.users-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100vw;
+    min-height: 50vh; 
+}
+.userdetails{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    width:700px;
+    background-color: rgba(63, 64, 86, 0.881);
+
+}
