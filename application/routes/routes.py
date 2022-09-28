@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, url_for, request
 from application import app, csrf
 from application.forms.forms import UserRegistration, UserLogin, ChangePassword, RemoverAccount
-from application.service.service import Userservice, Loginservice, DeleteService, UpdateService
+from application.service.service import Userservice, Loginservice, DeleteService, UpdateService, AdminPage
 from flask_login import current_user, logout_user, login_required
 
 
@@ -54,7 +54,6 @@ def dashboard():
         try:
             if request.method == "POST":
                 DeleteService.deleteUser()
-                message = "Succesfuly removed user"
                 return redirect(url_for('index'))
         except:
             message = "Delete Failed"
@@ -62,6 +61,13 @@ def dashboard():
 
     return render_template('dashboard.html', changeform=changeform, removeform=removeform)
 
+@app.route('/admin')
+def admin():
+    return AdminPage.checkAdmin()
+
+@app.route('/delete/<int:id>')
+def deleteuser(id):
+    return AdminPage.deleteUserById(id=id)
 
 # logout function
 @app.route('/logout')
