@@ -11,15 +11,6 @@ class Users(db.Model, UserMixin):
     remember_user = db.Column(db.Boolean, default=False)
     admin_id = db.relationship('UserAdmin', backref='users')
 
-    
-    # def __repr__(self) -> str:
-    #     return ''.join(['UserId: ', str(self.id), '\r\n',
-    #     'Email: ', self.user_email], '\r\n'
-    #     'Name: ', self.first_name, ' ', self.last_name,
-    #     '\r\n'
-    #     'User Name: ', self.user_name 
-    #     )
-
     def is_active(self):
         return True
     
@@ -37,6 +28,4 @@ def load_user(id):
 class UserAdmin(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column('user_id', db.Integer, db.ForeignKey('users.id'))
-    roles_id = db.Column(db.Integer, default=2)
-
-   
+    roles_id = db.Column(db.Integer, default=2)   

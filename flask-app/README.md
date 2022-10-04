@@ -14,6 +14,8 @@ The user should not be able to access the admin dashboard.
 ### The Database
 The database uses 3 tables to manage user information and what contente they can see and use in this app.
 
+Note: the creat.py file to set up the db has all users Passwords set to password by default. this can be changed in the Dashboard page of application.
+
 The Tables
 - Users --- Holds user information.
 - UserAdmin --- This is the bridge between the Users and UserRoles table.
