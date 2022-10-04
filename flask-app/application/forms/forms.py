@@ -25,5 +25,3 @@ class ChangePassword(FlaskForm):
 
 class RemoverAccount(FlaskForm):
     submit = SubmitField('Delete Account')
-
-
