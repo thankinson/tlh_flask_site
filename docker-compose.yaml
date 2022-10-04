@@ -1,11 +1,11 @@
 version: "3.8"
 services:
-  database:
-    build: ./db
-    ports:
-    - target: 3306
-      published: 3306
-      protocol: tcp
+  # database:
+  #   build: ./db
+  #   ports:
+  #   - target: 3306
+  #     published: 3306
+  #     protocol: tcp
   flask-app:
     build: ./flask-app
     ports:
