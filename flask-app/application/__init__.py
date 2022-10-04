@@ -7,8 +7,8 @@ from application.modules.csrf import csrf, CSRFError
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'bA5qzruPYLAyyx5QFNUVCg'
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///data.db"
-
+# app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///data.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:password@mysql:3306/flask-db'
 
 db =SQLAlchemy(app)
 bcrypt = Bcrypt(app)

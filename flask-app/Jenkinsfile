@@ -9,7 +9,8 @@ pipeline {
         }
         stage('PIP Install Requirments.txt'){
             steps {
-                sh 'pip install -r requirements.txt'
+                // sh 'pip install -r requirements.txt'
+                echo "setup test env"
             }
         }
         stage('Testing'){
