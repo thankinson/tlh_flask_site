@@ -21,4 +21,4 @@ services:
     volumes:
     - type: bind
       source: ./nginx/nginx.conf
-      target: /etc/nginx/nginx.confi
+      target: /etc/nginx/nginx.conf
