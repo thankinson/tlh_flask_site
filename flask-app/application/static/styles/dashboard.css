@@ -39,7 +39,6 @@ h2{
             border-radius: 4px;
             background-color: rgba(63, 64, 86, 0.881);
         }
-
 .bot-dash-div{
     display: flex;
     flex-direction: row;
@@ -65,7 +64,6 @@ h2{
             height: 40vh;
             border-radius: 4px;
             background-color: rgba(63, 64, 86, 0.881);
-
         }
         .pcs{
             display: flex;
@@ -73,7 +71,6 @@ h2{
             justify-content: space-evenly;
             height: 40vh;
         }
-
             .pcs-space{
                 display: flex;
                 flex-direction: row;
