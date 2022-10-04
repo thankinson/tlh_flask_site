@@ -18,9 +18,6 @@ class Userservice():
             db.session.add(user)
             addUserAdmin = UserAdmin(users=user)
             db.session.add(addUserAdmin)
-            # role = UserAdmin()
-            # addUser = UserAdmin(users=user, UserAdmin=role)
-            # db.session.add(addUser)
             db.session.commit()
             
 class Loginservice():
