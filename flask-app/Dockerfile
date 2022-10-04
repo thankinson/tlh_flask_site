@@ -6,6 +6,7 @@ RUN pip install flask-login
 RUN pip install -U Flask-SQLAlchemy
 RUN pip install pytest
 RUN pip install -U Flask-WTF
+RUN pip install wtforms
 COPY . /app
 EXPOSE 5000
 ENTRYPOINT ["python", "app.py"]
