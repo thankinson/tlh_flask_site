@@ -35,18 +35,23 @@ def load_user(id):
     return Users.query.get(int(id))
 
 
-class UserRoles(db.Model):
-    __tablename__ = 'UserRoles'
+# class UserRoles(db.Model):
+#     __tablename__ = 'UserRoles'
 
-    id = db.Column(db.Integer, primary_key=True)
-    roles = db.Column(db.String(30), nullable=False)
-    readAllowed = db.Column(db.Boolean)
-    writeAllowed = db.Column(db.Boolean)
-    user_id = db.relationship('UserAdmin', backref='UserRoles')
+#     id = db.Column(db.Integer, primary_key=True)
+#     roles = db.Column(db.String(30), nullable=False)
+#     readAllowed = db.Column(db.Boolean, default=True)
+#     writeAllowed = db.Column(db.Boolean, default=False)
+#     user_id = db.relationship('UserAdmin', backref='UserRoles')
+
+# class UserAdmin(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     user_id = db.Column('user_id', db.Integer, db.ForeignKey('users.id'))
+#     roles_id = db.Column('roles_id', db.Integer, db.ForeignKey('UserRoles.id'), default=2)
 
 class UserAdmin(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column('user_id', db.Integer, db.ForeignKey('users.id'))
-    roles_id = db.Column('roles_id', db.Integer, db.ForeignKey('UserRoles.id'))
+    roles_id = db.Column(db.Integer, default=2)
 
    

@@ -1,5 +1,5 @@
 from application import db
-from application.models.models import Users, UserAdmin, UserRoles
+from application.models.models import Users, UserAdmin
 from application import bcrypt
 
 # check_user = Users.query.filter_by(user_name='thankinson'.lower()).first()
@@ -20,48 +20,60 @@ AdminUser = Users(
     )
 db.session.add(AdminUser)
 
-AdminRole = UserRoles(
-    roles = 'admin',
-    readAllowed = True,
-    writeAllowed = True
-    )
-db.session.add(AdminRole)
-
-addUserAdmin = UserAdmin(users=AdminUser, UserRoles=AdminRole)
+addUserAdmin = UserAdmin(
+                    users=AdminUser,
+                    roles_id= 1)
 db.session.add(addUserAdmin)
 
-# users
+
 hash_pw = bcrypt.generate_password_hash('password')
 AdminUser = Users(
     user_name='jsmith',
     first_name='john',
     last_name='smith',
-    user_email='john@email.com',
+    user_email='jsmith@email.com',
     password= hash_pw
     )
 db.session.add(AdminUser)
 
-AdminRole = UserRoles(
-    roles = 'user',
-    readAllowed = True,
-    writeAllowed = False
-    )
-db.session.add(AdminRole)
-
-addUserAdmin = UserAdmin(users=AdminUser, UserRoles=AdminRole)
+addUserAdmin = UserAdmin(
+                    users=AdminUser)
 db.session.add(addUserAdmin)
 
-hash_pw = bcrypt.generate_password_hash('password')
-AdminUser = Users(
-    user_name='sboyd',
-    first_name='sarah',
-    last_name='boyd',
-    user_email='sarah@email.com',
-    password= hash_pw
-    )
-db.session.add(AdminUser)
-
-addUserAdmin = UserAdmin(users=AdminUser, UserRoles=AdminRole)
-db.session.add(addUserAdmin)
 
 db.session.commit()
+# # users
+# hash_pw = bcrypt.generate_password_hash('password')
+# AdminUser = Users(
+#     user_name='jsmith',
+#     first_name='john',
+#     last_name='smith',
+#     user_email='john@email.com',
+#     password= hash_pw
+#     )
+# db.session.add(AdminUser)
+
+# AdminRole = UserRoles(
+#     roles = 'user',
+#     readAllowed = True,
+#     writeAllowed = False
+#     )
+# db.session.add(AdminRole)
+
+# addUserAdmin = UserAdmin(users=AdminUser, UserRoles=AdminRole)
+# db.session.add(addUserAdmin)
+
+# hash_pw = bcrypt.generate_password_hash('password')
+# AdminUser = Users(
+#     user_name='sboyd',
+#     first_name='sarah',
+#     last_name='boyd',
+#     user_email='sarah@email.com',
+#     password= hash_pw
+#     )
+# db.session.add(AdminUser)
+
+# addUserAdmin = UserAdmin(users=AdminUser, UserRoles=AdminRole)
+# db.session.add(addUserAdmin)
+
+# db.session.commit()

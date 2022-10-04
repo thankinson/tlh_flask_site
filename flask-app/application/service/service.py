@@ -8,14 +8,19 @@ from flask_login import login_user, current_user, logout_user, login_required
 class Userservice():
         def Adduser(form):
             hash_pw = bcrypt.generate_password_hash(form.password.data)
-            users = Users(
+            user = Users(
                 user_name = form.user_name.data,
                 first_name = form.first_name.data,
                 last_name = form.last_name.data,
                 user_email = form.user_email.data,
                 password = hash_pw
             )
-            db.session.add(users)
+            db.session.add(user)
+            addUserAdmin = UserAdmin(users=user)
+            db.session.add(addUserAdmin)
+            # role = UserAdmin()
+            # addUser = UserAdmin(users=user, UserAdmin=role)
+            # db.session.add(addUser)
             db.session.commit()
             
 class Loginservice():
