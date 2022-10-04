@@ -18,9 +18,6 @@ class Userservice():
             db.session.add(user)
             addUserAdmin = UserAdmin(users=user)
             db.session.add(addUserAdmin)
-            # role = UserAdmin()
-            # addUser = UserAdmin(users=user, UserAdmin=role)
-            # db.session.add(addUser)
             db.session.commit()
             
 class Loginservice():
@@ -35,13 +32,6 @@ class Loginservice():
             print(user.user_name)
             user.remember_user = True
             login_user(user, remember=True)
-            # print(user.user_name, ' Login_user')
-            # return redirect(url_for('index'))
-            # next_page = request.args.get('index')
-            # if next_page:
-            #     return redirect(url_for(next_page))
-            # else:
-            #     return redirect('index')
 
 class DeleteService():
     def deleteUser():
