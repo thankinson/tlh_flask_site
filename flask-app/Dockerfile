@@ -1,4 +1,4 @@
-FROM python:3.7
+FROM python:latest
 WORKDIR /app
 RUN pip install flask
 RUN pip install flask-bcrypt
