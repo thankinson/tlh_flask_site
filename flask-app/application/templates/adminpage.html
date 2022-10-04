@@ -7,16 +7,17 @@
 
 <div class="page-content">
     <h1>Admin Page</h1>
-    <h3>Here you can remove users from the site.</h3>
+    <h3>Here you can give users Admin controll or remove users from the site.</h3>
     <div class="users-div">
-        {% for user in users %}
+        {% for user, role in users %}
             <div class="userdetails">
                 <p>User Name: {{ user.user_name }}, &nbsp;</p>
                 <p>Name: {{ user.first_name.capitalize() }} {{ user.last_name.capitalize() }}, &nbsp;</p>
                 <p>Email: {{user.user_email}}</p>
-                {% if user.id == 1 %}
+                {% if role.roles_id == 1 %}
                     <p>Admin</p>
                 {% else %}
+                <a href="{{ url_for('updateuser', id=user.id)}}">Make Admin</a></td>
                 <a href="{{ url_for('deleteuser', id=user.id)}}">Delete</a></td>
                 {% endif %}
             </div>
