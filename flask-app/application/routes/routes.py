@@ -61,6 +61,13 @@ def dashboard():
 
     return render_template('dashboard.html', changeform=changeform, removeform=removeform)
 
+# logout function
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
+
+# admin only features
 @app.route('/admin')
 def admin():
     return AdminPage.checkAdmin()
@@ -69,8 +76,8 @@ def admin():
 def deleteuser(id):
     return AdminPage.deleteUserById(id=id)
 
-# logout function
-@app.route('/logout')
-def logout():
-    logout_user()
-    return redirect(url_for('index'))
+@app.route('/updateuser/<int:id>')
+def updateuser(id):
+    return AdminPage.updateUserAminById(id=id)
+
+
