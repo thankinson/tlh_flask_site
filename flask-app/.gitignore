@@ -1,5 +1,3 @@
 **/__pycache__/
 **/venv/
 *.db
-create.py
-.create.py
