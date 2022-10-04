@@ -1,17 +1,5 @@
 version: "3.8"
 services:
-  # database:
-  #   build: ./db
-  #   ports:
-  #   - target: 3306
-  #     published: 3306
-  #     protocol: tcp
-  flask-app:
-    build: ./flask-app
-    ports:
-    - target: 5000
-      published: 5000
-      protocol: tcp
   nginx:
     image: nginx:latest
     ports:
@@ -22,3 +10,15 @@ services:
     - type: bind
       source: ./nginx/nginx.conf
       target: /etc/nginx/nginx.conf
+  flask-app:
+    build: ./flask-app
+    ports:
+    - target: 5000
+      published: 5000
+      protocol: tcp
+  # database:
+  #   build: ./db
+  #   ports:
+  #   - target: 3306
+  #     published: 3306
+  #     protocol: tcp
