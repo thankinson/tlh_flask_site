@@ -8,10 +8,10 @@ app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'bA5qzruPYLAyyx5QFNUVCg'
 # app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///data.db"
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:password@mysql:3306/flask-db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:[MYSQL_ROOT_PASSWORD]@mysql:3306/flask-db'
 
 db =SQLAlchemy(app)
-bcrypt = Bcrypt(app)
+bcrypt = Bcrypt(app)        
 csrf.init_app(app)
 
 login_manager = LoginManager(app)
