@@ -1,9 +1,9 @@
 CREATE TABLE IF NOT EXISTS "users" (
-	"id"	INTEGER NOT NULL,
+	"id" INTEGER NOT NULL,
 	"user_name"	VARCHAR(30) NOT NULL,
-	"first_name"	VARCHAR(30) NOT NULL,
+	"first_name" VARCHAR(30) NOT NULL,
 	"last_name"	VARCHAR(30) NOT NULL,
-	"user_email"	VARCHAR(30) NOT NULL,
+	"user_email" VARCHAR(30) NOT NULL,
 	"password"	VARCHAR(200) NOT NULL,
 	"remember_user"	BOOLEAN,
 	PRIMARY KEY("id"),
@@ -11,9 +11,9 @@ CREATE TABLE IF NOT EXISTS "users" (
 	UNIQUE("user_name")
 );
 CREATE TABLE IF NOT EXISTS "user_admin" (
-	"id"	INTEGER NOT NULL,
-	"user_id"	INTEGER,
-	"roles_id"	INTEGER,
+	"id" INTEGER NOT NULL,
+	"user_id" INTEGER,
+	"roles_id" INTEGER,
 	PRIMARY KEY("id"),
 	FOREIGN KEY("user_id") REFERENCES "users"("id")
 );
