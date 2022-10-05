@@ -8,6 +8,8 @@ services:
     - target: 80
       published: 80
       protocol: tcp
+    links:
+    - flask-app
     volumes:
     - type: bind
       source: ./nginx/nginx.conf
