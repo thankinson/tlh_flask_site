@@ -68,9 +68,12 @@ class SignUpPage():
         form = UserRegistration()
         logform = UserLogin()
         if form.validate_on_submit():
+            print("Form Signup HIt")
             if request.method == 'POST':
+                print("if Signup HIt")
                 try:
                     Userservice.Adduser(form=form)
+                    print("Adduser Signup HIt")
                     message = "User added to database"
                 except:
                     message = "User Name or Email Already in use"            
