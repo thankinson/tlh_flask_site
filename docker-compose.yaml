@@ -17,8 +17,12 @@ services:
       published: 5000
       protocol: tcp
   database:
-    build: ./db
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
     ports:
-    - target: 3306
-      published: 3306
-      protocol: tcp
+    - 3306:3306
+    volumes:
+    - ./db:/docker-entrypoint-initdb.d
