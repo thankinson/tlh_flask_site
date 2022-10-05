@@ -11,5 +11,4 @@ RUN pip install wtforms[email]
 RUN python3 -m pip install PyMySQL
 RUN python3 -m pip install PyMySQL[rsa]
 COPY . /flask-app
-EXPOSE 5000
 ENTRYPOINT ["python", "app.py"]
