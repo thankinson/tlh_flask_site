@@ -2,6 +2,8 @@ version: "3.8"
 services:
   nginx:
     image: nginx:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: password
     ports:
     - target: 80
       published: 80
