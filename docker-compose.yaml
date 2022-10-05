@@ -16,9 +16,9 @@ services:
     - target: 5000
       published: 5000
       protocol: tcp
-  # database:
-  #   build: ./db
-  #   ports:
-  #   - target: 3306
-  #     published: 3306
-  #     protocol: tcp
+  database:
+    build: ./db
+    ports:
+    - target: 3306
+      published: 3306
+      protocol: tcp

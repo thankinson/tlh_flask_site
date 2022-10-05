@@ -9,3 +9,5 @@ Dockerfile
 Jenjinsfile
 *.git
 .git
+.gitognore
+*.gitognore

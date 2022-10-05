@@ -1,5 +1,5 @@
 FROM python:latest
-WORKDIR /app
+WORKDIR /flask-app
 RUN pip install flask
 RUN pip install flask-bcrypt
 RUN pip install flask-login
@@ -10,6 +10,7 @@ RUN pip install wtforms
 RUN pip install wtforms[email]
 RUN python3 -m pip install PyMySQL
 RUN python3 -m pip install PyMySQL[rsa]
-COPY . /app
+COPY . /flask-app
 EXPOSE 5000
+RUN python3 create.py
 ENTRYPOINT ["python", "app.py"]
