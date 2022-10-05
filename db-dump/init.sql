@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS "users" (
 	"first_name" VARCHAR(30) NOT NULL,
 	"last_name"	VARCHAR(30) NOT NULL,
 	"user_email" VARCHAR(30) NOT NULL,
-	"password"	VARCHAR(200) NOT NULL,
+	"password" VARCHAR(200) NOT NULL,
 	"remember_user"	BOOLEAN,
 	PRIMARY KEY("id"),
 	UNIQUE("user_email"),
