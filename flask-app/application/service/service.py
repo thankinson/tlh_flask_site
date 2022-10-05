@@ -7,6 +7,8 @@ from flask_login import login_user, current_user, logout_user, login_required
 
 class Userservice():
     def Adduser(form):
+        print("Add user hit")
+        print(form)
         hash_pw = bcrypt.generate_password_hash(form.password.data)
         user = Users(
             user_name = form.user_name.data,
@@ -15,10 +17,13 @@ class Userservice():
             user_email = form.user_email.data,
             password = hash_pw
         )
+        print("user hit")
+        print(user)
         db.session.add(user)
         addUserAdmin = UserAdmin(users=user)
         db.session.add(addUserAdmin)
         db.session.commit()
+        print("Hurray Submitted")
             
 class Loginservice():
     def is_logged_in(current_user):
