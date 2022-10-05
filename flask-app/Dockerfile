@@ -12,5 +12,4 @@ RUN python3 -m pip install PyMySQL
 RUN python3 -m pip install PyMySQL[rsa]
 COPY . /flask-app
 EXPOSE 5000
-RUN python3 create.py
 ENTRYPOINT ["python", "app.py"]
