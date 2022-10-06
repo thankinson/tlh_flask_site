@@ -61,6 +61,11 @@ class UpdateService():
                 user.password = hash_pw
                 db.session.commit()
 
+class IndexPage():
+    def index():
+        admin = db.session.query(current_user.id, UserAdmin.user_id).join(UserAdmin.user_id).all()
+        return render_template('index.html', user=admin)
+
 class SignUpPage():
     def SignUp():
         message = ""
@@ -131,6 +136,9 @@ class AdminPage():
         db.session.commit()
         return redirect(url_for('admin'))
 
+
+
+# builds db
 class DbConnect():
     def createdatabase():
         DbConnect.create_db()
