@@ -20,3 +20,5 @@ CREATE TABLE IF NOT EXISTS user_admin (
 INSERT INTO users (id,user_name,first_name,last_name,user_email,password,remember_user) VALUES (1,'admin','admin','admin','admin@email.com','$2b$12$WovjzWcD6y9XQtvocqiosOzwlp/xLrDLG7Nz.WaHpYoVJaLeGx8Om',0);
 INSERT INTO user_admin (id,user_id,roles_id) VALUES (1,1,1);
 
+GRANT ALL PRIVILEGES ON finalproject.* TO 'root'@'localhost'
+
