@@ -40,4 +40,4 @@ services:
       target: 3306
     # volumes:
     # - mysql-data:/var/lib/mysql
-    restart: always
+    # restart: always
