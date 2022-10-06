@@ -4,6 +4,7 @@ from application.service.service import Loginservice, SignUpPage, DashboardPage,
 
 @app.before_first_request
 def create_tables():
+    db.drop_all()
     db.create_all()
 
 @app.route('/')
