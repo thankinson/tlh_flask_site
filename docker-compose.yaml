@@ -33,8 +33,6 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: finalproject
-      MYSQL_USER: root
-      MYSQL_PASSWORD: password
     ports:
     - published: 3306
       target: 3306
