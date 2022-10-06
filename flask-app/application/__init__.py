@@ -8,19 +8,11 @@ import pymysql
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'bA5qzruPYLAyyx5QFNUVCg'
-# app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///data.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///data.db"
 
 # dbconnect = 'mysql+pymysql://root:password@database:3306/finalproject'
 
-dbconnect = pymysql.connect(
-    host='database',
-    user='root',
-    passwd='password',
-    db='finalproject',
-    port=3306
-    )
-
-app.config['SQLALCHEMY_DATABASE_URI'] = dbconnect
+# app.config['SQLALCHEMY_DATABASE_URI'] = dbconnect
 db =SQLAlchemy(app)
 
 bcrypt = Bcrypt(app)        
