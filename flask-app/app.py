@@ -1,7 +1,6 @@
 from venv import create
-from application import app
-from create import Dbbuild
+from application import app, db
 
 if __name__ == "__main__":
-    Dbbuild()
+    db.create_all()
     app.run(debug=True, host='0.0.0.0', port=5000)
