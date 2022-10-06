@@ -5,23 +5,22 @@ from application import bcrypt
 
 # default password for all suers is password
 
-def Dbbuild():
-    db.drop_all()
-    db.create_all()
-    hash_pw = bcrypt.generate_password_hash('password')
-    AdminUser = Users(
-        user_name='admin',
-        first_name='admin',
-        last_name='admin',
-        user_email='admin@email.com',
-        password= hash_pw
-        )
-    db.session.add(AdminUser)
+db.drop_all()
+db.create_all()
+hash_pw = bcrypt.generate_password_hash('password')
+AdminUser = Users(
+    user_name='admin',
+    first_name='admin',
+    last_name='admin',
+    user_email='admin@email.com',
+    password= hash_pw
+    )
+db.session.add(AdminUser)
 
-    addUserAdmin = UserAdmin(
-                        users=AdminUser,
-                        roles_id= 1)
-    db.session.add(addUserAdmin)
+addUserAdmin = UserAdmin(
+                    users=AdminUser,
+                    roles_id= 1)
+db.session.add(addUserAdmin)
 
 # # users
 # AdminUser = Users(
