@@ -11,6 +11,7 @@ def index():
 @app.route('/register', methods=['GET', 'POST'])
 @csrf.exempt
 def register():
+    print("sign up hit")
     return SignUpPage.SignUp()
 
 # dashboard any user has access to this

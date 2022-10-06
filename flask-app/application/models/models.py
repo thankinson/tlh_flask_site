@@ -1,5 +1,6 @@
 from application import db, login_manager
 from flask_login import UserMixin
+from sqlalchemy.dialects.mysql import INTEGER, CHAR, BOOLEAN
 
 class Users(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
