@@ -30,3 +30,5 @@ class UserAdmin(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column('user_id', db.Integer, db.ForeignKey('users.id'))
     roles_id = db.Column(db.Integer, default=2)   
+
+db.create_all()
