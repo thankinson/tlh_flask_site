@@ -24,8 +24,8 @@ services:
       protocol: tcp
     deploy:
       replicas: 1
-    links:
-    - database:finalproject
+    depends_on:
+    - database
     restart: always
   database:
     image: mysql:8
