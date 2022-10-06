@@ -1,4 +1,5 @@
 from flask import Flask
+from os import environ
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
@@ -7,8 +8,10 @@ from application.modules.csrf import csrf, CSRFError
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'bA5qzruPYLAyyx5QFNUVCg'
-# app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///data.db"
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:password@database:3306/finalproject'
+app.config['SECRET_KEY'] = 'bA5qzruPYLAyyx5QFNUVCg'
+app.config['SQLALCHEMY_DATABASE_URI'] = environ.get("db_connection")
+
+print(app.config['SQLALCHEMY_DATABASE_URI'])
 db =SQLAlchemy(app)
 
 bcrypt = Bcrypt(app)        

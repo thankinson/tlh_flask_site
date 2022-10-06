@@ -2,8 +2,6 @@ version: "3.8"
 services:
   nginx:
     image: nginx:latest
-    environment:
-      MYSQL_ROOT_PASSWORD: password
     ports:
     - target: 80
       published: 80
@@ -16,20 +14,29 @@ services:
       target: /etc/nginx/nginx.conf
   flask-app:
     build: ./flask-app
+    environment:
+    - db_connection=mysql+pymysql://root:password@database:3306/finalproject
+    - PYTHONUNBUFFERED=1
     ports:
     - target: 5000
       published: 5000
       protocol: tcp
+    deploy:
+      replicas: 1
     links:
     - database:finalproject
   database:
-    image: mysql:latest
+    image: mysql:8
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: finalproject
+      MYSQL_USER: root
+      MYSQL_PASSWORD: password
     ports:
-    - 3306:3306
+    - published: 3306
+      target: 3306
     volumes:
-    - ./db-dump/init.sql:/docker-entrypoint-initdb.d/init.sql
+    - mysql-data:/var/lib/mysql
+
