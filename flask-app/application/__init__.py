@@ -16,7 +16,8 @@ dbconnect = pymysql.connect(
     host='database',
     user='root',
     passwd='password',
-    db='finalproject'
+    db='finalproject',
+    port=3306
     )
 
 app.config['SQLALCHEMY_DATABASE_URI'] = dbconnect
