@@ -16,6 +16,6 @@ csrf.init_app(app)
 
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
-
+db.create_all()
 from application.routes import routes
 from application.models import models
