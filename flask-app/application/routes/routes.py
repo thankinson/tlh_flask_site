@@ -1,6 +1,10 @@
 from flask import Flask, render_template
-from application import app, csrf
+from application import app,db, csrf
 from application.service.service import Loginservice, SignUpPage, DashboardPage, AdminPage
+
+@app.before_first_request
+def create_tables():
+    db.create_all()
 
 @app.route('/')
 @app.route('/home')
