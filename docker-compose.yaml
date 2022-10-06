@@ -31,5 +31,5 @@ services:
       MYSQL_DATABASE: finalproject
     ports:
     - 3306:3306
-    volumes:
-    - ./db-dump/init.sql:/docker-entrypoint-initdb.d/init.sql
+    # volumes:
+    # - ./db-dump/init.sql:/docker-entrypoint-initdb.d/init.sql
