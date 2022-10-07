@@ -1,6 +1,10 @@
 h2, h3, label{
     color: white;
 }
+.madmin {
+    color: red;
+    border: dashed white 1px;
+}
 h2{
     text-decoration-line: underline;
 }
