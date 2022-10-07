@@ -21,7 +21,6 @@ class DbConnect():
             password= hash_pw
             )
         db.session.add(AdminUser)
-
         addUserAdmin = UserAdmin(
                             users=AdminUser,
                             roles_id= 1)

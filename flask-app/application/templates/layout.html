@@ -19,9 +19,7 @@
                 {% if current_user.is_authenticated %}
                     <li><a  href="{{ url_for('dashboard')}}">Dashboard</a></li>
                     <li><a  href="{{ url_for('logout')}}">Logout</a></li>
-                    {% if admin.roles_id.id == 1 %}
                     <li><a  href="{{ url_for('admin')}}">Admin</a></li>
-                    {% endif %}
                     {% else %}
                     <li><a href="{{ url_for('register') }}">Sign Up / Login</a></li>
                 {% endif %}  
