@@ -14,13 +14,12 @@
     
         <div class="nav-div">
             <ul>
-                <li><a href="{{ url_for('index') }}">Home</a></li>
-             
                 {% if current_user.is_authenticated %}
                     <li><a  href="{{ url_for('dashboard')}}">Dashboard</a></li>
                     <li><a  href="{{ url_for('logout')}}">Logout</a></li>
                     {% block admin %} {% endblock admin %}
                     {% else %}
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
                     <li><a href="{{ url_for('register') }}">Sign Up / Login</a></li>
                 {% endif %}  
             </ul>
