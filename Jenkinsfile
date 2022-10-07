@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Docker Build'){
             steps {
-                sh 'inital-setup-flask-app'
+                sh 'docker-compose up -d --build inital-setup-flask-app'
             }
         }
         stage('Check App is up'){
