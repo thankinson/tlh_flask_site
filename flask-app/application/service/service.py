@@ -63,7 +63,7 @@ class UpdateService():
 
 class IndexPage():
     def index():
-        admin = ""
+        admin = False
         if current_user.is_authenticated:
             admin = UserAdmin.query.filter_by(user_id=current_user.id).first()
         return render_template('index.html', admin=admin)
