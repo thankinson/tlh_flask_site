@@ -63,8 +63,8 @@ class UpdateService():
 
 class IndexPage():
     def index():
-        admin = db.session.query(current_user.id, UserAdmin.user_id).join(UserAdmin.user_id).all()
-        return render_template('index.html', user=admin)
+        # admin = db.session.query(current_user.id, UserAdmin.user_id).join(UserAdmin.user_id).all()
+        return render_template('index.html')
 
 class SignUpPage():
     def SignUp():
