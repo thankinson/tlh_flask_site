@@ -47,8 +47,9 @@ class DashboardPage():
         removeform = RemoverAccount()
         if not current_user.is_authenticated:
             return redirect(url_for('index'))
-        else:
+        if current_user.is_authenticated:
             admin = UserAdmin.query.filter_by(user_id=current_user.id).first()
+            print(admin)
         if changeform.validate_on_submit():
             if request.method == "POST":
                 UpdateService.updatePass(changeform=changeform)
