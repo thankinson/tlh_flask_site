@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 from application import app, csrf
-from application.service.service import IndexPage, Loginservice, SignUpPage, DashboardPage, AdminPage, DbConnect
+from application.service.service import IndexPage, Loginservice, SignUpPage, DashboardPage, AdminPage
+from application.service.create_db import DbConnect
 
 # @app.route('/createdb')
 @app.before_first_request

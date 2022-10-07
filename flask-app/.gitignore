@@ -3,3 +3,5 @@
 *.db
 .coverage
 test
+.pytest_cache
+*create.py
