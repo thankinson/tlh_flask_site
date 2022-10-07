@@ -9,8 +9,8 @@ from flask_login import login_user, current_user, logout_user, login_required
 class IndexPage():
     def index():
         if current_user.is_authenticated:
-            admin = UserAdmin.query.filter_by(user_id=current_user.id).first()
-        return render_template('index.html', isAdmin=admin)
+            isAdmin = UserAdmin.query.filter_by(user_id=current_user.id).first()
+        return render_template('index.html', isAdmin=isAdmin)
 
 class SignUpPage():
     def SignUp():
