@@ -8,10 +8,9 @@ from flask_login import login_user, current_user, logout_user, login_required
 # Each page has a class
 class IndexPage():
     def index():
-        # admin = False
-        # if current_user.is_authenticated:
-        #     admin = UserAdmin.query.filter_by(user_id=current_user.id).first()
-        return render_template('index.html')
+        if current_user.is_authenticated:
+            admin = UserAdmin.query.filter_by(user_id=current_user.id).first()
+        return render_template('index.html', isAdmin=admin)
 
 class SignUpPage():
     def SignUp():
@@ -49,7 +48,6 @@ class DashboardPage():
             return redirect(url_for('index'))
         if current_user.is_authenticated:
             admin = UserAdmin.query.filter_by(user_id=current_user.id).first()
-            print(admin)
         if changeform.validate_on_submit():
             if request.method == "POST":
                 UpdateService.updatePass(changeform=changeform)
@@ -66,7 +64,7 @@ class AdminPage():
             if current_user.id == isAdmin.user_id:
                 if isAdmin.roles_id == 1:
                     isUser = db.session.query(Users, UserAdmin).join(UserAdmin).all()
-                    return render_template('adminpage.html', users=isUser)                
+                    return render_template('adminpage.html', users=isUser, isAdmin=isAdmin)                
                 else:
                     return redirect(url_for('dashboard'))
         else: 
