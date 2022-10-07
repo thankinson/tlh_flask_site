@@ -7,11 +7,6 @@ pipeline {
                 echo 'GitPull Success'
             }
         }
-        stage('Docker destroy'){
-            steps {
-                sh 'docker-compose down --rmi all'
-            }
-        }
         stage('Docker Build'){
             steps {
                 sh 'docker-compose up -d'
