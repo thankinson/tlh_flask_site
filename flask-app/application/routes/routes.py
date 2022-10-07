@@ -2,6 +2,11 @@ from flask import Flask, render_template
 from application import app, csrf
 from application.service.service import IndexPage, Loginservice, SignUpPage, DashboardPage, AdminPage, DbConnect
 
+# @app.route('/createdb')
+@app.before_first_request
+def createdatabase():
+    return DbConnect.createdatabase()
+    
 @app.route('/')
 @app.route('/home')
 def index():
@@ -35,7 +40,3 @@ def deleteuser(id):
 @app.route('/updateuser/<int:id>')
 def updateuser(id):
     return AdminPage.updateUserAminById(id=id)
-
-@app.route('/createdb')
-def createdatabase():
-    return DbConnect.createdatabase()
