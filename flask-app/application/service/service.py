@@ -47,6 +47,8 @@ class DashboardPage():
         removeform = RemoverAccount()
         if not current_user.is_authenticated:
             return redirect(url_for('index'))
+        else:
+            admin = UserAdmin.query.filter_by(user_id=current_user.id).first()
         if changeform.validate_on_submit():
             if request.method == "POST":
                 UpdateService.updatePass(changeform=changeform)
@@ -54,7 +56,7 @@ class DashboardPage():
             if request.method == "POST":
                 DeleteService.deleteUser()
                 return redirect(url_for('index'))
-        return render_template('dashboard.html', changeform=changeform, removeform=removeform)
+        return render_template('dashboard.html', changeform=changeform, removeform=removeform, isAdmin=admin)
 
 class AdminPage():
     def checkAdmin():

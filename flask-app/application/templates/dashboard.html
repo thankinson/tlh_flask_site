@@ -4,6 +4,12 @@
 
 {% block tital %}<title>Dashboard</title>{% endblock tital %}
 
+{% block admin %} 
+    {% if isAdmin.roles_id.id == 1 %}
+    <li><a  href="{{ url_for('admin')}}">Admin</a></li>
+    {% endif %}
+{% endblock admin %}
+
 {% block body %}
 
     <div class="dashboard-container">
