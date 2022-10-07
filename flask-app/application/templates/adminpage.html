@@ -2,6 +2,12 @@
 {% block styles %}<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/adminpage.css') }}">{% endblock styles %}
 {% block tital %}<title>Admin Portal</title>{% endblock tital %}
 
+{% block admin %} 
+    {% if isAdmin.roles_id== 1 %}
+    <li><a  href="{{ url_for('admin')}}">Admin</a></li>
+    {% endif %}
+{% endblock admin %}
+
 {% block body %}
 
 
