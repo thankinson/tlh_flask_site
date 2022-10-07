@@ -26,3 +26,4 @@ class DbConnect():
                             users=AdminUser,
                             roles_id= 1)
         db.session.add(addUserAdmin)
+        db.session.commit()
