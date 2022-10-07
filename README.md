@@ -51,7 +51,7 @@ trello link: https://trello.com/b/gVIqjaOK/qa-tlh-final-project
 - pytest
 
 ## File Structure
-- 
+``` 
 root/
 |    flask-app/
 |    |    |----application/
@@ -103,8 +103,7 @@ root/
 |---docker-compose.ymal
 |
 |---Jenkinsfile
-- 
-
+```
 ### The write up
 - unit Testing
 I did not get around to unit testing my app. Even thouigh i started my project a few weeks ago i had that many issues getting docker to work over the first 2 days i didnt have enoughtime to write any test as it only left me a day for fixing the bugs in my app ready for hand in.
