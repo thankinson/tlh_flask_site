@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Docker destroy'){
             steps {
-                sh 'docker-compose down -rmi all'
+                sh 'docker-compose down --rmi all'
             }
         }
         stage('Docker Build'){
