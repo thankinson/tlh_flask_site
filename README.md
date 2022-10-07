@@ -51,6 +51,7 @@ trello link: https://trello.com/b/gVIqjaOK/qa-tlh-final-project
 - pytest
 
 ## File Structure
+...
 root/
 |    flask-app/
 |    |    |----application/
@@ -102,7 +103,7 @@ root/
 |---docker-compose.ymal
 |
 |---Jenkinsfile
-
+...
 
 ### The write up
 - unit Testing
