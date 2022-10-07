@@ -7,9 +7,14 @@ pipeline {
                 echo 'GitPull Success'
             }
         }
+        stage('Docker destroy'){
+            steps {
+                sh 'docker-compose down -rmi all'
+            }
+        }
         stage('Docker Build'){
             steps {
-                sh 'docker-compose up -d --build inital-setup-flask-app'
+                sh 'docker-compose up -d'
             }
         }
         stage('Check App is up'){
