@@ -25,8 +25,8 @@
                     <a href="{{ url_for('deleteuser', id=user.id)}}">Delete</a></td>
                     {% endif %}
                 {% else %}
-                <a href="{{ url_for('updateuser', id=user.id)}}">Make Admin</a></td>
-                <a href="{{ url_for('deleteuser', id=user.id)}}">Delete</a></td>
+                <a href="{{ url_for('updateuser', id=user.id)}}"><p>Make Admin</p></a></td>
+                <a href="{{ url_for('deleteuser', id=user.id)}}"><p>Delete</p></a></td>
                 {% endif %}
             </div>
             <div><br></div>
