@@ -14,8 +14,8 @@ pipeline {
         }
         stage('Check App is up'){
             steps {
-                sh 'sleep 10'
-                sh 'curl localhost:80'
+                sh 'sleep 20'
+                sh 'docker ps'
             }
         }
 
