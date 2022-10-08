@@ -11,7 +11,7 @@ pipeline {
         //     steps {
         //         sh 'docker-compose up -d'
         //     }
-        }
+        // }
         stage('Check App is up'){
             steps {
                 sh 'sleep 20'
