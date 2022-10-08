@@ -7,10 +7,10 @@ pipeline {
                 echo 'GitPull Success'
             }
         }
-        stage('Docker Build'){
-            steps {
-                sh 'docker-compose up -d'
-            }
+        // stage('Docker Build'){
+        //     steps {
+        //         sh 'docker-compose up -d'
+        //     }
         }
         stage('Check App is up'){
             steps {
