@@ -22,11 +22,12 @@
                 </div> 
                 <div class="userdetails">
                     {% if role.roles_id == 1 %}
-                        <p>Admin</p>
                         {% if role.user_id != 1 %}
-                        <a href="{{ url_for('deleteuser', id=user.id)}}"><p>Delete</p></a></td>
-                        <p>Admin User</p>
                         <a href="{{ url_for('updateToUser', id=user.id)}}"><p>Make User</p></a></td>
+                        <p>Admin User</p>
+                        <a href="{{ url_for('deleteuser', id=user.id)}}"><p>Delete</p></a></td>
+                       {% elif role.user_id == 1 %}
+                       <p>Admin</p>
                         {% endif %}
                     {% else %}
                         <a href="{{ url_for('updateToAdmin', id=user.id)}}"><p>Make Admin</p></a></td>
