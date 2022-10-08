@@ -39,5 +39,10 @@ def deleteuser(id):
     return AdminPage.deleteUserById(id=id)
 
 @app.route('/updateuser/<int:id>')
-def updateuser(id):
+def updateToAdmin(id):
     return AdminPage.updateUserAminById(id=id)
+
+@app.route('/updateadmin/<int:id>')
+def updateToUser(id):
+    return AdminPage.updateAdminUserById(id=id)
+

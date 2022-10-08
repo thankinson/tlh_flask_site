@@ -84,6 +84,12 @@ class AdminPage():
         db.session.commit()
         return redirect(url_for('admin'))
 
+    def updateAdminUserById(id):
+        find_user = UserAdmin.query.filter_by(user_id=id).first()
+        find_user.roles_id = 2
+        db.session.commit()
+        return redirect(url_for('admin'))
+
 # Functions
 class Userservice():
     def Adduser(form):

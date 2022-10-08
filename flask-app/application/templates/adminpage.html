@@ -23,9 +23,11 @@
                     <p>Admin</p>
                     {% if role.user_id != 1 %}
                     <a href="{{ url_for('deleteuser', id=user.id)}}"><p>Delete</p></a></td>
+                    <a href="{{ url_for('updateToUser', id=user.id)}}"><p>Make User</p></a></td>
+
                     {% endif %}
                 {% else %}
-                <a href="{{ url_for('updateuser', id=user.id)}}"><p>Make Admin</p></a></td>
+                <a href="{{ url_for('updateToAdmin', id=user.id)}}"><p>Make Admin</p></a></td>
                 <a href="{{ url_for('deleteuser', id=user.id)}}"><p>Delete</p></a></td>
                 {% endif %}
             </div>
